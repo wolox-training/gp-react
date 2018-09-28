@@ -60,11 +60,12 @@ typings/
 # next.js build output
 .next
 
-# SCSS Folder
-scss
+# SCSS
 .sass-cache
+
+# CSS
+*.css
 
 # JetBrains Folder
 .idea
 .DS_Store
-*.css
