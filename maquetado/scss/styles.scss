@@ -1,3 +1,9 @@
-.title {
-  color: red;
+// Fonts
+$main-font: 'Roboto', Helvetica, sans-serif;
+$titles-font-size: 24px;
+
+// Sections
+.section {
+  margin: 70px 100px 100px 100px;
+  width: 100%;
 }
