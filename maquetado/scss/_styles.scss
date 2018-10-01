@@ -1,0 +1,14 @@
+// Imports
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+// Common
+body {
+  font-family: $font-main;
+}
+
+// Sections
+.section {
+  margin: 50px auto;
+  max-width: 992px;
+  width: 100%;
+}
