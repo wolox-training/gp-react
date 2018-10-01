@@ -1,5 +1,10 @@
+// Common
+body {
+  font-family: $font-main;
+}
+
 // Sections
 .section {
-  margin: 70px 100px 100px 100px;
+  margin: 70px 100px 100px;
   width: 100%;
 }
