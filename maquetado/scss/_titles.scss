@@ -1,9 +1,19 @@
 .title {
-  background: transparent url('assets/triangle.svg') no-repeat center left;
+  align-items: center;
   color: $black;
+  display: flex;
   font-size: 24px;
   height: $title-decoration-height;
-  padding-left: 52px;
-  padding-top: 35px;
+  position: relative;
   width: 100%;
+}
+
+.title:before {
+  background: transparent url('assets/triangle.svg') no-repeat 0 0;
+  content: "";
+  height: $title-decoration-height;
+  left: -50px;
+  position: absolute;
+  width: $title-decoration-width;
+  z-index: -1;
 }
