@@ -1,19 +1,21 @@
-.title {
-  align-items: center;
-  color: $black;
-  display: flex;
-  font-size: 24px;
-  height: $title-decoration-height;
-  position: relative;
-  width: 100%;
-}
+.section {
+  .title {
+    align-items: center;
+    color: $black;
+    display: flex;
+    font-size: $text-big;
+    height: $title-decoration-height;
+    position: relative;
+    width: 100%;
 
-.title:before {
-  background: transparent url('assets/triangle.svg') no-repeat 0 0;
-  content: "";
-  height: $title-decoration-height;
-  left: -50px;
-  position: absolute;
-  width: $title-decoration-width;
-  z-index: -1;
+    &:before {
+      background: transparent url('assets/triangle.svg') no-repeat 0 0;
+      content: '';
+      height: $title-decoration-height;
+      left: -50px;
+      position: absolute;
+      width: $title-decoration-width;
+      z-index: -1;
+    }
+  }
 }
