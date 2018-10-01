@@ -1,9 +1,8 @@
 .title {
   background: transparent url('assets/triangle.svg') no-repeat center left;
-  color: $titles-color;
-  font-family: $main-font;
+  color: $color-black;
   font-size: 24px;
-  height: 93px;
+  height: $title-decoration-height;
   padding-left: 52px;
   padding-top: 35px;
   width: 100%;
