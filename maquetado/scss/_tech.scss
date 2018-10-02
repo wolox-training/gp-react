@@ -18,8 +18,15 @@
     left: -10px;
     position: absolute;
     top: -10px;
+    transition: left 0.5s ease,
+                top 0.5s ease;
     width: 100%;
     z-index: -1;
+  }
+
+  &:hover:before {
+    left: 10px;
+    top: 10px;
   }
 
   .icon {
