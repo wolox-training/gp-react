@@ -7,7 +7,6 @@
   max-width: 100%;
   padding: 15px;
   position: relative;
-  text-align: center;
   width: 220px;
 
   &:before {
@@ -37,4 +36,8 @@
 
 .tech-subtitle {
   font-weight: bold;
+}
+
+.tech-content {
+  text-align: center;
 }
