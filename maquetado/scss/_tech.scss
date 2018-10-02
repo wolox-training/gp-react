@@ -4,11 +4,12 @@
   border-radius: $tech-border-radius;
   display: flex;
   flex-direction: column;
+  margin: 20px;
   max-width: 100%;
   padding: 15px;
   position: relative;
   text-align: center;
-  width: 220px;
+  width: 200px;
 
   &:before {
     border: 1px solid $green;
@@ -37,4 +38,8 @@
 
 .tech-subtitle {
   font-weight: bold;
+}
+
+.tech-content {
+  font-size: $text-small;
 }
