@@ -8,7 +8,6 @@
   max-width: 100%;
   padding: 15px;
   position: relative;
-  text-align: center;
   width: 200px;
 
   &:before {
@@ -42,4 +41,5 @@
 
 .tech-content {
   font-size: $text-small;
+  text-align: center;
 }
