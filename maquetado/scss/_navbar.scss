@@ -1,0 +1,17 @@
+.nav {
+  align-items: center;
+  box-shadow: 0 0 20px #000;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-logo {
+  margin: 30px;
+  max-width: 100%;
+  width: 200px;
+}
+
+.nav-tag {
+  font-size: $text-big;
+  margin: 20px;
+}
