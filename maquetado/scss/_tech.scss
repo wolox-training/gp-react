@@ -1,20 +1,21 @@
 .technology {
   align-items: center;
   background-color: $green;
-  border-radius: 10px;
+  border-radius: $tech-border-radius;
   display: flex;
   flex-direction: column;
-  height: 350px;
-  margin: 15px;
+  margin: 20px;
+  max-width: 100%;
+  padding: 15px;
   position: relative;
   text-align: center;
-  width: 20%;
+  width: 200px;
 
   &:before {
     border: 1px solid $green;
-    border-radius: 10px;
+    border-radius: $tech-border-radius;
     content: '';
-    height: 350px;
+    height: 100%;
     left: -10px;
     position: absolute;
     top: -10px;
@@ -28,27 +29,24 @@
     left: 10px;
     top: 10px;
   }
+}
 
-  .icon {
-    height: $tech-logo-size;
-    margin: 15px 0;
-    padding: 0;
-    width: $tech-logo-size;
-  }
+.tech-icon {
+  height: $tech-logo-size;
+  width: $tech-logo-size;
+}
 
-  .name,
-  .subtitle {
-    font-size: $text-medium;
-    padding: 15px;
-  }
+.tech-name,
+.tech-subtitle,
+.tech-content {
+  font-size: $text-medium;
+  margin: 10px
+}
 
-  .content {
-    font-size: $text-small;
-    padding: 20px;
-  }
+.tech-subtitle {
+  font-weight: bold;
+}
 
-  .subtitle {
-    font-weight: bold;
-    padding: 5px;
-  }
+.tech-content {
+  font-size: $text-small;
 }
