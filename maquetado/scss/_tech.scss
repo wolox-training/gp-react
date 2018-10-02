@@ -5,9 +5,10 @@
   display: flex;
   flex-direction: column;
   height: 350px;
+  margin: 15px;
   position: relative;
   text-align: center;
-  width: 25%;
+  width: 20%;
 
   &:before {
     border: 1px solid $green;
@@ -29,10 +30,14 @@
   }
 
   .name,
-  .subtitle,
-  .content {
+  .subtitle {
     font-size: $text-medium;
-    padding: 15px 30px;
+    padding: 15px;
+  }
+
+  .content {
+    font-size: $text-small;
+    padding: 20px;
   }
 
   .subtitle {
