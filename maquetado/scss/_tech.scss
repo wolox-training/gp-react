@@ -1,7 +1,6 @@
 .technology {
   align-items: center;
-  background-color: $green;
-  border-radius: $tech-border-radius;
+  background-color: $white;
   display: flex;
   flex-direction: column;
   margin: 20px;
@@ -9,25 +8,6 @@
   padding: 15px;
   position: relative;
   width: 200px;
-
-  &:before {
-    border: 1px solid $green;
-    border-radius: $tech-border-radius;
-    content: '';
-    height: 100%;
-    left: -10px;
-    position: absolute;
-    top: -10px;
-    transition: left 0.5s ease,
-                top 0.5s ease;
-    width: 100%;
-    z-index: -1;
-  }
-
-  &:hover:before {
-    left: 10px;
-    top: 10px;
-  }
 }
 
 .tech-icon {
