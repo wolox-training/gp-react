@@ -31,9 +31,29 @@
   text-align: center;
 }
 
-.tech-react {
-  grid-column-start: 2;
-  grid-column-end: 2;
-  grid-row-start: 2;
-  grid-row-end: 3;
+.tech-react, .tech-ruby {
+  border-right: $green 2px solid;
+  grid-column: 2 / 2;
+  grid-row: 2 / 4;
+  justify-content: center;
+}
+
+.tech-angular, .tech-node {
+  grid-column: 3 / 3;
+  grid-row: 2 / 2;
+}
+
+.tech-vue, .tech-asp {
+  grid-column: 4 / 4;
+  grid-row: 2 / 2;
+}
+
+.tech-elm, .tech-django {
+  grid-column: 3 / 3;
+  grid-row: 3 / 3;
+}
+
+.tech-polymer {
+  grid-column: 4 / 4;
+  grid-row: 3 / 3;
 }

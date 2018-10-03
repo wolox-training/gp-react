@@ -2,10 +2,6 @@
   align-items: center;
   color: $black;
   font-size: $text-big;
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row-start: 1;
-  grid-row-end: 1;
   height: $title-decoration-height;
   margin: 20px;
   position: relative;
@@ -20,4 +16,9 @@
     width: $title-decoration-width;
     z-index: -1;
   }
+}
+
+.title-front {
+  grid-column: 1 / 1;
+  grid-row: 1 / 1;
 }
