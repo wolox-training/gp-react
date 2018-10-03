@@ -18,8 +18,13 @@
     left: -10px;
     position: absolute;
     top: -10px;
+    transition: transform 500ms ease;
     width: 100%;
     z-index: -1;
+  }
+
+  &:hover:before {
+    transform: translate(20px, 20px);;
   }
 }
 
