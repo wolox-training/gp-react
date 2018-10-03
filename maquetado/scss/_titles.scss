@@ -1,8 +1,11 @@
 .title {
   align-items: center;
   color: $black;
-  display: flex;
   font-size: $text-big;
+  grid-column-start: 1;
+  grid-column-end: 1;
+  grid-row-start: 1;
+  grid-row-end: 1;
   height: $title-decoration-height;
   margin: 20px;
   position: relative;
