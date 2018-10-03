@@ -18,3 +18,9 @@
     z-index: -1;
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .title {
+    max-width: 180px;
+  }
+}

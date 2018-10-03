@@ -33,3 +33,15 @@
     text-decoration: underline;
   }
 }
+
+@media only screen and (max-width: 1024px) {
+  .foo-final {
+    align-self: center;
+    font-size: $text-small;
+    margin: 20px;
+  }
+
+  .foo-logo {
+    width: 300px;
+  }
+}

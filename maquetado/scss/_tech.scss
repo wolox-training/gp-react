@@ -42,3 +42,22 @@
   font-size: $text-small;
   text-align: center;
 }
+
+@media only screen and (max-width: 1024px) {
+  .technologies {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .technology {
+    border-bottom: $green 2px solid;
+
+    &:first-child {
+      border-right: none;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}
