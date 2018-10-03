@@ -1,0 +1,35 @@
+.footer {
+  align-items: center;
+  background-color: $blue;
+  color: $white;
+  display: flex;
+  flex-direction: column;
+  padding: 0 25px 30px 0;
+}
+
+.foo-brand {
+  color: $white;
+  font-size: $text-medium;
+  margin: 40px 0 20px;
+  text-transform: uppercase;
+}
+
+.foo-logo {
+  margin-bottom: 15px;
+}
+
+.foo-final {
+  align-self: flex-end;
+  color: $white;
+}
+
+.foo-link {
+  color: $white;
+
+  &:hover,
+  &:visited,
+  &:active {
+    color: $white;
+    text-decoration: underline;
+  }
+}
