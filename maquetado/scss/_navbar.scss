@@ -1,0 +1,23 @@
+.nav {
+  align-items: center;
+  background-color: $white;
+  box-shadow: 0 0 15px $grey;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.nav-logo {
+  margin: 30px;
+  max-width: 100%;
+  width: 200px;
+}
+
+.nav-tag {
+  font-size: $text-big;
+  margin: 20px;
+}
