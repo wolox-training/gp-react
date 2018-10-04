@@ -8,9 +8,9 @@ body {
 
 // Sections
 .section {
-  display: grid;
-  grid-template-columns: 170px auto auto auto 170px;
-  grid-template-rows: 100px auto auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   margin: 100px auto;
   max-width: 992px;
   width: 100%;
