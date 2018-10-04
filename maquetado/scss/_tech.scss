@@ -40,3 +40,21 @@
   font-size: $text-small;
   text-align: center;
 }
+
+@media only screen and (max-width: 1024px) {
+  .technologies {
+    grid-template-columns: 1fr;
+  }
+
+  .technology {
+    border-bottom: 2px solid $green;
+
+    &:first-child {
+      border-right: none;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+  }
+}

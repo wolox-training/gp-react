@@ -4,7 +4,6 @@
   color: $white;
   display: flex;
   flex-direction: column;
-  padding: 0 25px 30px 0;
 }
 
 .foo-brand {
@@ -31,5 +30,17 @@
   &:active {
     color: $white;
     text-decoration: underline;
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+  .foo-final {
+    align-self: center;
+    font-size: $text-small;
+    margin: 20px;
+  }
+
+  .foo-logo {
+    width: 300px;
   }
 }
