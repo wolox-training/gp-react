@@ -44,11 +44,10 @@
 @media only screen and (max-width: 1024px) {
   .technologies {
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
   }
 
   .technology {
-    border-bottom: $green 2px solid;
+    border-bottom: 2px solid $green;
 
     &:first-child {
       border-right: none;

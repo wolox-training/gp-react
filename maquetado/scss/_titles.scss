@@ -1,6 +1,7 @@
 .title {
   align-items: center;
   color: $black;
+  display: flex;
   font-size: $text-big;
   height: $title-decoration-height;
   margin: 20px;
@@ -20,6 +21,6 @@
 
 @media only screen and (max-width: 1024px) {
   .title {
-    max-width: 180px;
+    max-width: 60%;
   }
 }
