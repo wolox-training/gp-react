@@ -1,16 +1,15 @@
 import { isArray } from './utils';
 
-export function min(numbers) {
-  if (isArray(numbers)) {
-    return Math.min(...numbers);
+export function min(...numbers) {
+  if (numbers.length === 1) {
+    if (isArray(numbers[0])) {
+      return Math.min(...numbers[0]);
+    }
+
+    return numbers[0];
   }
 
-  const myArgs = arguments;
-  if (myArgs.length === 1) {
-    return Math.min(myArgs[0]);
-  }
-
-  return Math.min(...myArgs);
+  return Math.min(...numbers);
 }
 
 export function copy() {
