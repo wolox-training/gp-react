@@ -23,3 +23,9 @@ export function copy(myObject) {
 
   return { ...myObject };
 }
+
+export function reverseMerge(myArray1, myArray2) {
+  const myReversedArray = copy(myArray2);
+  myReversedArray.push(...myArray1);
+  return myReversedArray;
+}
