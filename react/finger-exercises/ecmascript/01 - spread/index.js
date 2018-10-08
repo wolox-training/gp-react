@@ -16,6 +16,6 @@ export function min(...numbers) {
   return Math.min(...numbers);
 }
 
-export function copy() {
-
+export function copy(myObject) {
+  return { ...myObject };
 }
