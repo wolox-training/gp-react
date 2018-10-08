@@ -17,5 +17,9 @@ export function min(...numbers) {
 }
 
 export function copy(myObject) {
+  if (isArray(myObject)) {
+    return myObject.slice();
+  }
+
   return { ...myObject };
 }
