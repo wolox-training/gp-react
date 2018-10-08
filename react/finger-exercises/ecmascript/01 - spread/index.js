@@ -29,3 +29,12 @@ export function reverseMerge(myArray1, myArray2) {
   myReversedArray.push(...myArray1);
   return myReversedArray;
 }
+
+export function filterAttribs(myObject) {
+  const dontAllowed = ['a', 'b'];
+  return Object.keys(myObject).filter(key => !dontAllowed.includes(key)).reduce((obj, key) => {
+    const myNewObj = obj;
+    myNewObj[key] = myObject[key];
+    return myNewObj;
+  }, {});
+}
