@@ -8,6 +8,10 @@ export function delay(delayTime) {
   }));
 }
 
-export function asyncDelay() {
-
+export function asyncDelay(delayTime) {
+  return new Promise(((resolve) => {
+    setTimeout(() => {
+      resolve(delayTime);
+    }, delay);
+  }));
 }
