@@ -1,6 +1,10 @@
+@import '../../../../../../../scss/colors';
+//@import 'colors';
+//@import 'colors.scss';
+
 .square {
-  background-color: #fff;
-  border: 1px solid #999;
+  background-color: $white;
+  border: 1px solid $dusty-gray;
   float: left;
   font-size: 24px;
   font-weight: bold;
@@ -13,7 +17,7 @@
   width: 34px;
 
   &:focus {
-    background: #ddd;
+    background: $alto;
     outline: none;
   }
 }
