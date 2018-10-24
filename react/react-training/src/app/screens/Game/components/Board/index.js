@@ -11,7 +11,7 @@ class Board extends Component {
 
   render() {
     return (
-      <div>
+      <fragment>
         <div className={styles.status}>{status}</div>
         <div className={styles.boardRow}>
           {this.renderSquare(0)}
@@ -28,7 +28,7 @@ class Board extends Component {
           {this.renderSquare(7)}
           {this.renderSquare(8)}
         </div>
-      </div>
+      </fragment>
     );
   }
 }
