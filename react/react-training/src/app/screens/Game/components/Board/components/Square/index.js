@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import styles from './styles.scss';
+
 function Square(props) {
   return (
-    <button className="square" onClick={props.onClick}>
+    <button className={styles.square} onClick={props.onClick}>
       {props.value}
     </button>
   );

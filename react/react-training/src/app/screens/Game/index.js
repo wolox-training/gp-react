@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import Board from './MyScreenComponent/Board';
-import './Game.css';
+import Board from './components/Board/';
+import styles from './styles.scss';
 
 function calculateWinner(squares) {
   const lines = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
@@ -77,11 +77,11 @@ class Game extends Component {
     }
 
     return (
-      <div className="game">
-        <div className="game-board">
+      <div className={styles.game}>
+        <div className={styles.gameBoard}>
           <Board squares={current.squares} onClick={i => this.handleClick(i)} />
         </div>
-        <div className="game-info">
+        <div className={styles.gameInfo}>
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
