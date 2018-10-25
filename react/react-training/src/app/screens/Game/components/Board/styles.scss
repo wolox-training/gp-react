@@ -1,4 +1,8 @@
-.board-row:after {
+.board {
+  margin-left: 20px;
+}
+
+.row:after {
   clear: both;
   content: "";
   display: table;

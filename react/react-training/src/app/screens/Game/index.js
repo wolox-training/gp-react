@@ -76,10 +76,8 @@ class Game extends Component {
 
     return (
       <div className={styles.game}>
-        <div className={styles.gameBoard}>
-          <Board squares={current.squares} onClick={i => this.handleClick(i)} />
-        </div>
-        <div className={styles.gameInfo}>
+        <Board squares={current.squares} onClick={i => this.handleClick(i)} />
+        <div className={styles.info}>
           <div>{status}</div>
           <ol>{moves}</ol>
         </div>
