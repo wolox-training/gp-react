@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import lines from '@constants';
 
 import Board from './components/Board/';
+import HistoryItem from './components/HistoryItem/';
 import styles from './styles.scss';
 
 function calculateWinner(squares) {
@@ -53,19 +54,12 @@ class Game extends Component {
     });
   };
 
+  renderHistory = (step, move) => <HistoryItem key={`item-${move}`} move={move} handler={this.jumpTo} />;
+
   render() {
     const history = this.state.history;
     const current = history[this.state.stepNumber];
     const winner = calculateWinner(current.squares);
-
-    const moves = history.map((step, move) => {
-      const desc = move ? `Go to move #${move}` : 'Go to game start';
-      return (
-        <li key={desc}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
-        </li>
-      );
-    });
 
     let status;
     if (winner) {
@@ -79,7 +73,7 @@ class Game extends Component {
         <Board squares={current.squares} onClick={this.handleClick} />
         <div className={styles.info}>
           <div>{status}</div>
-          <ol>{moves}</ol>
+          <ol>{history.map(this.renderHistory)}</ol>
         </div>
       </div>
     );
