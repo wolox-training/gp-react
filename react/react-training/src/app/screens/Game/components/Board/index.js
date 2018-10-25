@@ -5,9 +5,7 @@ import Square from './components/Square/';
 import styles from './styles.scss';
 
 class Board extends Component {
-  renderSquare(i) {
-    return <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
-  }
+  renderSquare = i => <Square value={this.props.squares[i]} onClick={() => this.props.onClick(i)} />;
 
   render() {
     return (
