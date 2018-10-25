@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import lines from '../../../constants/';
+import lines from '@constants';
 
 import Board from './components/Board/';
 import styles from './styles.scss';
@@ -16,18 +16,15 @@ function calculateWinner(squares) {
 }
 
 class Game extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      history: [
-        {
-          squares: Array(9).fill(null)
-        }
-      ],
-      stepNumber: 0,
-      xIsNext: true
-    };
-  }
+  state = {
+    history: [
+      {
+        squares: Array(9).fill(null)
+      }
+    ],
+    stepNumber: 0,
+    xIsNext: true
+  };
 
   handleClick(i) {
     const history = this.state.history.slice(0, this.state.stepNumber + 1);

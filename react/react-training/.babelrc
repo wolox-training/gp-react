@@ -7,8 +7,9 @@
       "root": ["./src"],
       "alias": {
         "~components": "./src/app/components",
-        "~screens": "./src/app/screens",
-        "~redux": "./src/redux"
+        "@screens": "./src/app/screens",
+        "~redux": "./src/redux",
+        "@constants": "./src/constants"
       }
     }]
   ]
