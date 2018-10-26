@@ -8,10 +8,10 @@ class HistoryItem extends Component {
   };
 
   render() {
-    const { move, key } = this.props;
+    const { move } = this.props;
     const description = move ? `Go to move #${move}` : 'Go to game start';
     return (
-      <li key={key}>
+      <li>
         <button onClick={this.handleClick}>{description}</button>
       </li>
     );
@@ -19,7 +19,6 @@ class HistoryItem extends Component {
 }
 
 HistoryItem.propTypes = {
-  key: PropTypes.string.isRequired,
   move: PropTypes.string.isRequired,
   handler: PropTypes.func.isRequired
 };
