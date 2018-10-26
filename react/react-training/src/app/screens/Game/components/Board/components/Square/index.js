@@ -5,13 +5,15 @@ import styles from './styles.scss';
 
 class Square extends Component {
   handleClick = () => {
-    this.props.onClick(this.props.myI);
+    const { myI, onClick } = this.props;
+    onClick(myI);
   };
 
   render() {
+    const { value } = this.props;
     return (
       <button className={styles.square} onClick={this.handleClick}>
-        {this.props.value}
+        {value}
       </button>
     );
   }

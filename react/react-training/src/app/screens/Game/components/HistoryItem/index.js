@@ -3,13 +3,15 @@ import PropTypes from 'prop-types';
 
 class HistoryItem extends Component {
   handleClick = () => {
-    this.props.handler(this.props.move);
+    const { move, handler } = this.props;
+    handler(move);
   };
 
   render() {
-    const description = this.props.move ? `Go to move #${this.props.move}` : 'Go to game start';
+    const { move, key } = this.props;
+    const description = move ? `Go to move #${move}` : 'Go to game start';
     return (
-      <li key={this.props.key}>
+      <li key={key}>
         <button onClick={this.handleClick}>{description}</button>
       </li>
     );

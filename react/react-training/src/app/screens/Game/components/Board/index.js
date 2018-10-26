@@ -6,10 +6,14 @@ import styles from './styles.scss';
 
 class Board extends Component {
   handleClick = i => {
-    this.props.onClick(i);
+    const { onClick } = this.props;
+    onClick(i);
   };
 
-  renderSquare = i => <Square value={this.props.squares[i]} myI={i} onClick={this.handleClick} />;
+  renderSquare = i => {
+    const { squares } = this.props;
+    return <Square value={squares[i]} myI={i} onClick={this.handleClick} />;
+  };
 
   render() {
     return (
