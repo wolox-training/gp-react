@@ -5,8 +5,8 @@ import styles from './styles.scss';
 
 class Square extends Component {
   handleClick = () => {
-    const { myI, onClick } = this.props;
-    onClick(myI);
+    const { squareNumber, onClick } = this.props;
+    onClick(squareNumber);
   };
 
   render() {
@@ -21,7 +21,7 @@ class Square extends Component {
 
 Square.propTypes = {
   onClick: PropTypes.func.isRequired,
-  myI: PropTypes.string.isRequired,
+  squareNumber: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired
 };
 

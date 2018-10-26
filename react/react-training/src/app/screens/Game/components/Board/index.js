@@ -12,7 +12,7 @@ class Board extends Component {
 
   renderSquare = i => {
     const { squares } = this.props;
-    return <Square value={squares[i]} myI={i} onClick={this.handleClick} />;
+    return <Square value={squares[i]} squareNumber={i} onClick={this.handleClick} />;
   };
 
   render() {
