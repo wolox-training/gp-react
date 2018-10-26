@@ -1,4 +1,4 @@
-import lines from '@constants';
+import { lines } from '@constants';
 
 export function calculateWinner(squares) {
   for (let i = 0; i < lines.length; i += 1) {
