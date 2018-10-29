@@ -6,9 +6,9 @@
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
-        "~components": "./src/app/components",
-        "~redux": "./src/redux",
+        "@components": "./src/app/components",
         "@constants": "./src/constants",
+        "@redux": "./src/redux",
         "@screens": "./src/app/screens",
         "@utils": "./src/utils"
       }
