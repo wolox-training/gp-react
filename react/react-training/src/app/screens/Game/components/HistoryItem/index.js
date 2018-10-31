@@ -19,7 +19,7 @@ class HistoryItem extends Component {
 }
 
 HistoryItem.propTypes = {
-  move: PropTypes.string.isRequired,
+  move: PropTypes.number.isRequired,
   handler: PropTypes.func.isRequired
 };
 
