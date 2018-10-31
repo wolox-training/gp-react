@@ -1,13 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import AppRoutes from '@components/AppRoutes';
 import { Provider } from 'react-redux';
-import Game from '@screens/Game';
-import Login from '@screens/Login';
 import { store } from '@redux/store';
 
 const App = () => (
   <Provider store={store}>
-    <Login />
+    <AppRoutes />
   </Provider>
 );
 
