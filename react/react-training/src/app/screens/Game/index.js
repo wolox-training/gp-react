@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { makeMove, makeJump } from '@redux/game/actions';
+import { actionsCreators as Actions } from '@redux/game/actions';
 
 import { calculateWinner } from '@utils';
 
@@ -66,8 +66,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  makeMove: (history, squares, xIsNext) => dispatch(makeMove(history, squares, xIsNext)),
-  makeJump: (stepNumber, xIsNext) => dispatch(makeJump(stepNumber, xIsNext))
+  makeMove: (history, squares, xIsNext) => dispatch(Actions.makeMove(history, squares, xIsNext)),
+  makeJump: (stepNumber, xIsNext) => dispatch(Actions.makeJump(stepNumber, xIsNext))
 });
 
 export default connect(

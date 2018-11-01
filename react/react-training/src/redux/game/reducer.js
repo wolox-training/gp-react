@@ -8,7 +8,6 @@ const initialState = {
   xIsNext: true
 };
 
-// noinspection JSUnusedGlobalSymbols
 export const reducer = (state = initialState, action) => {
   switch (action.type) {
     case 'MAKE_MOVE':
