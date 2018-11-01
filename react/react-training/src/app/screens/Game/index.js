@@ -22,7 +22,7 @@ class Game extends Component {
 
     squares[i] = xIsNext ? 'X' : 'O';
 
-    makeMove(newHistory, squares, xIsNext);
+    makeMove(newHistory, squares);
   };
 
   jumpTo = step => {
@@ -66,7 +66,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  makeMove: (history, squares, xIsNext) => dispatch(Actions.makeMove(history, squares, xIsNext)),
+  makeMove: (history, squares) => dispatch(Actions.makeMove(history, squares)),
   makeJump: (stepNumber, xIsNext) => dispatch(Actions.makeJump(stepNumber, xIsNext))
 });
 

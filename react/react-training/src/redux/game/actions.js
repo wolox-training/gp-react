@@ -1,9 +1,9 @@
 export const actionsCreators = {
-  makeMove: (history, squares, xIsNext) => {
+  makeMove: (history, squares) => (dispatch, getState) => {
     history = history.concat([{ squares }]);
-    xIsNext = !xIsNext;
+    const xIsNext = !getState().game.xIsNext;
     const stepNumber = history.length - 1;
-    return {
+    dispatch({
       type: 'MAKE_MOVE',
       payload: {
         history,
@@ -11,7 +11,7 @@ export const actionsCreators = {
         stepNumber,
         xIsNext
       }
-    };
+    });
   },
 
   makeJump: (stepNumber, xIsNext) => {
