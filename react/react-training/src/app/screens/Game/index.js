@@ -52,7 +52,7 @@ class Game extends Component {
 }
 
 Game.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
+  history: PropTypes.arrayOf(PropTypes.object).isRequired,
   stepNumber: PropTypes.number.isRequired,
   xIsNext: PropTypes.bool.isRequired,
   makeMove: PropTypes.func.isRequired,
