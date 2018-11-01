@@ -1,7 +1,8 @@
 // noinspection JSUnusedGlobalSymbols
-export const makeMove = (history, squares, stepNumber, xIsNext) => {
+export const makeMove = (history, squares, xIsNext) => {
   history = history.concat([{ squares }]);
   xIsNext = !xIsNext;
+  const stepNumber = history.length - 1;
   return {
     type: 'MAKE_MOVE',
     payload: {
