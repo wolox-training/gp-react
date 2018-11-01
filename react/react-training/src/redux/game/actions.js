@@ -1,10 +1,12 @@
+import { actionTypes } from '@constants';
+
 export const actionsCreators = {
   makeMove: (history, squares) => (dispatch, getState) => {
     history = history.concat([{ squares }]);
-    const xIsNext = !getState().game.xIsNext;
+    const xIsNext = !getState().GameReducer.xIsNext;
     const stepNumber = history.length - 1;
     dispatch({
-      type: 'MAKE_MOVE',
+      type: actionTypes.makeMove,
       payload: {
         history,
         squares,
@@ -14,10 +16,10 @@ export const actionsCreators = {
     });
   },
 
-  makeJump: (stepNumber, xIsNext) => {
-    xIsNext = stepNumber % 2 === 0;
+  makeJump: stepNumber => {
+    const xIsNext = stepNumber % 2 === 0;
     return {
-      type: 'MAKE_JUMP',
+      type: actionTypes.makeJump,
       payload: {
         stepNumber,
         xIsNext

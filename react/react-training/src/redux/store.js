@@ -1,9 +1,9 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
-import { reducer as game } from '@redux/game/reducer';
+import GameReducer from '@redux/game/reducer';
 
 const reducers = combineReducers({
-  game
+  GameReducer
 });
 
 /* eslint-disable no-underscore-dangle */

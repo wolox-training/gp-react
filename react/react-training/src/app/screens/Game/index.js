@@ -26,8 +26,8 @@ class Game extends Component {
   };
 
   jumpTo = step => {
-    const { xIsNext, makeJump } = this.props;
-    makeJump(step, xIsNext);
+    const { makeJump } = this.props;
+    makeJump(step);
   };
 
   renderHistory = (step, move) => <HistoryItem key={`item-${move}`} move={move} handler={this.jumpTo} />;
@@ -60,14 +60,14 @@ Game.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  history: state.game.history,
-  stepNumber: state.game.stepNumber,
-  xIsNext: state.game.xIsNext
+  history: state.GameReducer.history,
+  stepNumber: state.GameReducer.stepNumber,
+  xIsNext: state.GameReducer.xIsNext
 });
 
 const mapDispatchToProps = dispatch => ({
   makeMove: (history, squares) => dispatch(Actions.makeMove(history, squares)),
-  makeJump: (stepNumber, xIsNext) => dispatch(Actions.makeJump(stepNumber, xIsNext))
+  makeJump: stepNumber => dispatch(Actions.makeJump(stepNumber))
 });
 
 export default connect(
