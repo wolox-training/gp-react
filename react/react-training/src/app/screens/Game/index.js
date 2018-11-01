@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { makeMove, makeJump } from '@redux/game/actions';
+import { actionsCreators as Actions } from '@redux/game/actions';
 
 import { calculateWinner } from '@utils';
 
@@ -11,31 +11,33 @@ import styles from './styles.scss';
 
 class Game extends Component {
   handleClick = i => {
-    const history = this.props.history.slice(0, this.props.stepNumber + 1);
-    const current = history[history.length - 1];
+    const { history, stepNumber, xIsNext, makeMove } = this.props;
+    const newHistory = history.slice(0, stepNumber + 1);
+    const current = newHistory[newHistory.length - 1];
     const squares = current.squares.slice();
 
     if (calculateWinner(squares) || squares[i]) {
       return;
     }
 
-    squares[i] = this.props.xIsNext ? 'X' : 'O';
+    squares[i] = xIsNext ? 'X' : 'O';
 
-    this.props.makeMove(history, squares, history.length, this.props.xIsNext);
+    makeMove(newHistory, squares);
   };
 
   jumpTo = step => {
-    this.props.makeJump(step, this.props.xIsNext);
+    const { makeJump } = this.props;
+    makeJump(step);
   };
 
   renderHistory = (step, move) => <HistoryItem key={`item-${move}`} move={move} handler={this.jumpTo} />;
 
   render() {
-    const history = this.props.history;
-    const current = history[this.props.stepNumber];
+    const { history, stepNumber, xIsNext } = this.props;
+    const current = history[stepNumber];
     const winner = calculateWinner(current.squares);
 
-    const status = winner ? `Winner: ${winner}` : `Next player: ${this.props.xIsNext ? 'X' : 'O'}`;
+    const status = winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
 
     return (
       <div className={styles.game}>
@@ -50,7 +52,7 @@ class Game extends Component {
 }
 
 Game.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.objectOf).isRequired,
+  history: PropTypes.arrayOf(PropTypes.object).isRequired,
   stepNumber: PropTypes.number.isRequired,
   xIsNext: PropTypes.bool.isRequired,
   makeMove: PropTypes.func.isRequired,
@@ -58,15 +60,14 @@ Game.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  history: state.game.history,
-  stepNumber: state.game.stepNumber,
-  xIsNext: state.game.xIsNext
+  history: state.GameReducer.history,
+  stepNumber: state.GameReducer.stepNumber,
+  xIsNext: state.GameReducer.xIsNext
 });
 
 const mapDispatchToProps = dispatch => ({
-  makeMove: (history, squares, stepNumber, xIsNext) =>
-    dispatch(makeMove(history, squares, stepNumber, xIsNext)),
-  makeJump: (stepNumber, xIsNext) => dispatch(makeJump(stepNumber, xIsNext))
+  makeMove: (history, squares) => dispatch(Actions.makeMove(history, squares)),
+  makeJump: stepNumber => dispatch(Actions.makeJump(stepNumber))
 });
 
 export default connect(

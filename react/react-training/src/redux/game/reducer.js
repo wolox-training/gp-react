@@ -1,3 +1,5 @@
+import { actionTypes } from '@constants';
+
 const initialState = {
   history: [
     {
@@ -8,15 +10,14 @@ const initialState = {
   xIsNext: true
 };
 
-// noinspection JSUnusedGlobalSymbols
-export const reducer = (state = initialState, action) => {
+const Reducer = (state = initialState, action) => {
   switch (action.type) {
-    case 'MAKE_MOVE':
+    case actionTypes.makeMove:
       return {
         ...state,
         ...action.payload
       };
-    case 'MAKE_JUMP':
+    case actionTypes.makeJump:
       return {
         ...state,
         ...action.payload
@@ -25,3 +26,5 @@ export const reducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default Reducer;
