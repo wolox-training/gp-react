@@ -59,10 +59,10 @@ Game.propTypes = {
   makeJump: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-  history: state.GameReducer.history,
-  stepNumber: state.GameReducer.stepNumber,
-  xIsNext: state.GameReducer.xIsNext
+const mapStateToProps = ({ GameReducer }) => ({
+  history: GameReducer.history,
+  stepNumber: GameReducer.stepNumber,
+  xIsNext: GameReducer.xIsNext
 });
 
 const mapDispatchToProps = dispatch => ({
