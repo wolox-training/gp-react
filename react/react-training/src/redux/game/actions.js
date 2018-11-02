@@ -1,4 +1,7 @@
-import { actionTypes } from '@constants';
+export const actionTypes = {
+  makeMove: 'MAKE_MOVE',
+  makeJump: 'MAKE_JUMP'
+};
 
 export const actionsCreators = {
   makeMove: (history, squares) => (dispatch, getState) => {

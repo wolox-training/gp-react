@@ -52,17 +52,21 @@ class Game extends Component {
 }
 
 Game.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.arrayOf(
+    PropTypes.shape({
+      squares: PropTypes.arrayOf(PropTypes.string)
+    })
+  ).isRequired,
   stepNumber: PropTypes.number.isRequired,
   xIsNext: PropTypes.bool.isRequired,
   makeMove: PropTypes.func.isRequired,
   makeJump: PropTypes.func.isRequired
 };
 
-const mapStateToProps = state => ({
-  history: state.GameReducer.history,
-  stepNumber: state.GameReducer.stepNumber,
-  xIsNext: state.GameReducer.xIsNext
+const mapStateToProps = ({ GameReducer }) => ({
+  history: GameReducer.history,
+  stepNumber: GameReducer.stepNumber,
+  xIsNext: GameReducer.xIsNext
 });
 
 const mapDispatchToProps = dispatch => ({
