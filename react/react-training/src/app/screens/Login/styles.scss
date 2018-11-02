@@ -1,0 +1,22 @@
+@import 'variables/colors';
+@import 'variables/fonts';
+
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.title {
+  color: $blue;
+  font-size: $title-size;
+}
+.box {
+  font-size: $boxes-font-size;
+  margin: 5px;
+}
+.button {
+  background-color: $green;
+  color: $mine-shaft;
+  margin: 10px;
+  font-size: $button-font-size;
+}

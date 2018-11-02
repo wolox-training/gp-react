@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 
+import styles from './styles.scss';
+
 class Login extends Component {
   render() {
     return (
-      <div className="login-wrap">
-        <h2>Login</h2>
-        <div className="form">
-          <input type="text" placeholder="Username" name="username" />
-          <input type="password" placeholder="Password" name="passwprd" />
-          <button>Sign in</button>
+      <div className={styles.form}>
+        <h2 className={styles.title}>Login</h2>
+        <div>
+          <input className={styles.box} type="text" placeholder="Username" name="username" />
+        </div>
+        <div>
+          <input className={styles.box} type="password" placeholder="Password" name="password" />
+        </div>
+        <div>
+          <button className={styles.button}>Sign in</button>
         </div>
       </div>
     );
