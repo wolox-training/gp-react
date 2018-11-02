@@ -52,7 +52,11 @@ class Game extends Component {
 }
 
 Game.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.object).isRequired,
+  history: PropTypes.arrayOf(
+    PropTypes.shape({
+      squares: PropTypes.array
+    })
+  ).isRequired,
   stepNumber: PropTypes.number.isRequired,
   xIsNext: PropTypes.bool.isRequired,
   makeMove: PropTypes.func.isRequired,
