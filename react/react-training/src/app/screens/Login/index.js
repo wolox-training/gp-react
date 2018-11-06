@@ -8,12 +8,8 @@ class Login extends Component {
     return (
       <div className={styles.form}>
         <h2 className={styles.title}>Login</h2>
-        <div>
-          <input className={styles.box} type="text" placeholder="Username" name="username" />
-        </div>
-        <div>
-          <input className={styles.box} type="password" placeholder="Password" name="password" />
-        </div>
+        <input className={styles.input} type="text" placeholder="Username" name="username" />
+        <input className={styles.input} type="password" placeholder="Password" name="password" />
         <div>
           <Route
             render={({ history }) => (
