@@ -6,7 +6,7 @@ import { Route } from 'react-router-dom';
 
 import styles from '../../styles.scss';
 
-let LoginForm = props => {
+const LoginForm = props => {
   const { handleSubmit } = props;
   return (
     <form onSubmit={handleSubmit} className="form">
@@ -36,7 +36,7 @@ let LoginForm = props => {
   );
 };
 
-handleSignIn = values => {
+handleSubmit = values => {
   console.log(values);
 };
 
