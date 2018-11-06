@@ -5,9 +5,9 @@ import { actionsCreators as Actions } from '@redux/game/actions';
 
 import { calculateWinner } from '@utils';
 
-import Layout from './layout';
+import Game from './layout';
 
-class Game extends Component {
+class GameContainer extends Component {
   handleClick = i => {
     const { history, stepNumber, xIsNext, makeMove } = this.props;
     const newHistory = history.slice(0, stepNumber + 1);
@@ -26,7 +26,7 @@ class Game extends Component {
   render() {
     const { history, stepNumber, xIsNext, makeMove, makeJump } = this.props;
     return (
-      <Layout
+      <Game
         history={history}
         stepNumber={stepNumber}
         xIsNext={xIsNext}
@@ -38,7 +38,7 @@ class Game extends Component {
   }
 }
 
-Game.propTypes = {
+GameContainer.propTypes = {
   history: PropTypes.arrayOf(
     PropTypes.shape({
       squares: PropTypes.arrayOf(PropTypes.string)
@@ -64,4 +64,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Game);
+)(GameContainer);
