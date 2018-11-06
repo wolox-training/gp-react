@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 
 class HistoryItem extends Component {
   handleClick = () => {
-    const { move, handler } = this.props;
-    handler(move);
+    const { makeMove, makeJump } = this.props;
+    makeJump(makeMove);
   };
 
   render() {
-    const { move } = this.props;
-    const description = move ? `Go to move #${move}` : 'Go to game start';
+    const { makeMove } = this.props;
+    const description = makeMove ? `Go to move #${makeMove}` : 'Go to game start';
     return (
       <li>
         <button onClick={this.handleClick}>{description}</button>
@@ -19,8 +19,8 @@ class HistoryItem extends Component {
 }
 
 HistoryItem.propTypes = {
-  move: PropTypes.number.isRequired,
-  handler: PropTypes.func.isRequired
+  makeMove: PropTypes.number.isRequired,
+  makeJump: PropTypes.func.isRequired
 };
 
 export default HistoryItem;
