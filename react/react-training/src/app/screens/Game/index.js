@@ -5,9 +5,7 @@ import { actionsCreators as Actions } from '@redux/game/actions';
 
 import { calculateWinner } from '@utils';
 
-import Board from './components/Board/';
-import HistoryItem from './components/HistoryItem/';
-import styles from './styles.scss';
+import GameViewer from './components/GameViewer';
 
 class Game extends Component {
   handleClick = i => {
@@ -25,28 +23,17 @@ class Game extends Component {
     makeMove(newHistory, squares);
   };
 
-  jumpTo = step => {
-    const { makeJump } = this.props;
-    makeJump(step);
-  };
-
-  renderHistory = (step, move) => <HistoryItem key={`item-${move}`} move={move} handler={this.jumpTo} />;
-
   render() {
-    const { history, stepNumber, xIsNext } = this.props;
-    const current = history[stepNumber];
-    const winner = calculateWinner(current.squares);
-
-    const status = winner ? `Winner: ${winner}` : `Next player: ${xIsNext ? 'X' : 'O'}`;
-
+    const { history, stepNumber, xIsNext, makeMove, makeJump } = this.props;
     return (
-      <div className={styles.game}>
-        <Board squares={current.squares} onClick={this.handleClick} />
-        <div className={styles.info}>
-          <div>{status}</div>
-          <ol>{history.map(this.renderHistory)}</ol>
-        </div>
-      </div>
+      <GameViewer
+        history={history}
+        stepNumber={stepNumber}
+        xIsNext={xIsNext}
+        onClick={this.handleClick}
+        makeMove={makeMove}
+        makeJump={makeJump}
+      />
     );
   }
 }
@@ -57,10 +44,10 @@ Game.propTypes = {
       squares: PropTypes.arrayOf(PropTypes.string)
     })
   ).isRequired,
-  stepNumber: PropTypes.number.isRequired,
-  xIsNext: PropTypes.bool.isRequired,
+  makeJump: PropTypes.func.isRequired,
   makeMove: PropTypes.func.isRequired,
-  makeJump: PropTypes.func.isRequired
+  stepNumber: PropTypes.number.isRequired,
+  xIsNext: PropTypes.bool.isRequired
 };
 
 const mapStateToProps = ({ GameReducer }) => ({
