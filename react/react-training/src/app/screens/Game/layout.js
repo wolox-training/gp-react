@@ -7,7 +7,7 @@ import Board from './components/Board';
 import HistoryItem from './components/HistoryItem';
 import styles from './styles.scss';
 
-class GameViewer extends Component {
+class Layout extends Component {
   makeJump = step => {
     const { makeJump } = this.props;
     makeJump(step);
@@ -36,7 +36,7 @@ class GameViewer extends Component {
   }
 }
 
-GameViewer.propTypes = {
+Layout.propTypes = {
   history: PropTypes.arrayOf(
     PropTypes.shape({
       squares: PropTypes.arrayOf(PropTypes.string)
@@ -48,4 +48,4 @@ GameViewer.propTypes = {
   xIsNext: PropTypes.bool.isRequired
 };
 
-export default GameViewer;
+export default Layout;

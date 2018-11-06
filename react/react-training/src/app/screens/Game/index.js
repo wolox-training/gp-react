@@ -5,7 +5,7 @@ import { actionsCreators as Actions } from '@redux/game/actions';
 
 import { calculateWinner } from '@utils';
 
-import GameViewer from './components/GameViewer';
+import Layout from './layout';
 
 class Game extends Component {
   handleClick = i => {
@@ -26,7 +26,7 @@ class Game extends Component {
   render() {
     const { history, stepNumber, xIsNext, makeMove, makeJump } = this.props;
     return (
-      <GameViewer
+      <Layout
         history={history}
         stepNumber={stepNumber}
         xIsNext={xIsNext}
