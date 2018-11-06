@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Square from './components/Square/';
+import Square from './components/Square/index';
 import styles from './styles.scss';
 
 class Board extends Component {
@@ -19,17 +19,17 @@ class Board extends Component {
     return (
       <div className={styles.board}>
         <div className={styles.status}>{status}</div>
-        <div className={styles.row}>
+        <div>
           {this.renderSquare(0)}
           {this.renderSquare(1)}
           {this.renderSquare(2)}
         </div>
-        <div className={styles.row}>
+        <div>
           {this.renderSquare(3)}
           {this.renderSquare(4)}
           {this.renderSquare(5)}
         </div>
-        <div className={styles.row}>
+        <div>
           {this.renderSquare(6)}
           {this.renderSquare(7)}
           {this.renderSquare(8)}
@@ -41,7 +41,7 @@ class Board extends Component {
 
 Board.propTypes = {
   onClick: PropTypes.func.isRequired,
-  squares: PropTypes.arrayOf(PropTypes.number.isRequired).isRequired
+  squares: PropTypes.arrayOf(PropTypes.string)
 };
 
 export default Board;
