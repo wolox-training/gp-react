@@ -1,9 +1,11 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import GameReducer from '@redux/game/reducer';
+import FormReducer from '@redux/login/reducer';
 
 const reducers = combineReducers({
-  GameReducer
+  GameReducer,
+  FormReducer
 });
 
 /* eslint-disable no-underscore-dangle */
