@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Game from '@screens/Game';
 import Login from '@screens/Login';
@@ -8,10 +8,10 @@ export default class AppRoutes extends Component {
   render() {
     return (
       <Router>
-        <div>
+        <Fragment>
           <Route exact path={ROUTES.HOME} component={Login} />
           <Route exact path={ROUTES.GAME} component={Game} />
-        </div>
+        </Fragment>
       </Router>
     );
   }
