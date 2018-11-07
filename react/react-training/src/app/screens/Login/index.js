@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 
-import LoginForm from './components/LoginForm';
+import SignInForm from './components/SignInForm';
 
 class Login extends Component {
-  const handleSubmit = values => {
+  handleSubmit = values => {
     console.log(values);
   };
 
   render() {
-    return <LoginForm onSubmit={this.handleSubmit} />;
+    return <SignInForm onSubmit={this.handleSignIn} />;
+    // return <SignInForm onSubmit={this.handleSubmit} />;
   }
 }
 
