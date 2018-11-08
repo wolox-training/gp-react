@@ -9,3 +9,11 @@ export function calculateWinner(squares) {
   }
   return null;
 }
+
+export function validateEmail(email) {
+  // Taken from "How to validate an email address in JavaScript?": https://stackoverflow.com/a/46181/334963
+  /* eslint-disable no-useless-escape */
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
+  /* eslint-enable */
+}

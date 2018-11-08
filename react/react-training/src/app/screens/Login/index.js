@@ -4,12 +4,11 @@ import SignInForm from './components/SignInForm';
 
 class Login extends Component {
   handleSubmit = values => {
-    console.log(values);
+    console.log(JSON.stringify(values, null, 4));
   };
 
   render() {
-    return <SignInForm onSubmit={this.handleSignIn} />;
-    // return <SignInForm onSubmit={this.handleSubmit} />;
+    return <SignInForm onSubmit={this.handleSubmit} />;
   }
 }
 

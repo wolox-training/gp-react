@@ -13,6 +13,7 @@
 }
 
 .input {
+  text-align: center;
   font-size: $boxes-font-size;
   margin: 5px;
 }
@@ -26,4 +27,9 @@
 
 .link {
   text-decoration: none;
+}
+
+.error {
+  color: $red;
+  margin: 0 0 10px 10px;
 }

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-// import { Provider } from 'react-redux';
-// import { createStore, combineReducers } from 'redux';
 import { Field, reduxForm } from 'redux-form';
-// import { Route } from 'react-router-dom';
-
-import styles from './styles.scss';
 import PropTypes from 'prop-types';
-import Layout from '../../../Game/layout';
+
+import CustomField from './components/CustomField';
+import { required, minLength, isEmail } from './components/Validation';
+import styles from './styles.scss';
 
 class SignInForm extends Component {
   render() {
@@ -15,24 +13,22 @@ class SignInForm extends Component {
     return (
       <form className={styles.form} onSubmit={handleSubmit}>
         <h2 className={styles.title}>Login</h2>
-        <div>
-          <Field
-            className={styles.input}
-            type="text"
-            placeholder="Username"
-            name="username"
-            component="input"
-          />
-        </div>
-        <div>
-          <Field
-            className={styles.input}
-            type="password"
-            placeholder="Password"
-            name="password"
-            component="input"
-          />
-        </div>
+        <Field
+          className={styles.input}
+          type="text"
+          placeholder="Username"
+          name="username"
+          component={CustomField}
+          validate={[required, isEmail]}
+        />
+        <Field
+          className={styles.input}
+          type="password"
+          placeholder="Password"
+          name="password"
+          component={CustomField}
+          validate={[required, minLength]}
+        />
         <div>
           <button className={styles.button}>Sign in</button>
         </div>
@@ -40,10 +36,6 @@ class SignInForm extends Component {
     );
   }
 }
-
-// handleSubmit = values => {
-//   console.log(values);
-// };
 
 SignInForm.propTypes = {
   handleSubmit: PropTypes.func

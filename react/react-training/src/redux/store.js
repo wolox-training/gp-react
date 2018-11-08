@@ -5,7 +5,7 @@ import { reducer as formReducer } from 'redux-form';
 
 const reducers = combineReducers({
   GameReducer,
-  formReducer
+  form: formReducer
 });
 
 /* eslint-disable no-underscore-dangle */
