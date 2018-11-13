@@ -2,11 +2,10 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 
-import { CustomField } from './components/CustomField';
-import { required, minLength, isEmail } from './components/Validation';
-
 import { FORM_SIGIN } from '@constants';
 
+import { CustomField } from './components/CustomField';
+import { required, minLength, isEmail } from './components/Validation';
 import styles from './styles.scss';
 
 class SignInForm extends Component {
