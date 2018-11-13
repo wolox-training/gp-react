@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 
 import { CustomField } from './components/CustomField';
 import { required, minLength, isEmail } from './components/Validation';
+
+import { FORM_SIGIN } from '@constants';
+
 import styles from './styles.scss';
 
 class SignInForm extends Component {
@@ -38,9 +41,9 @@ class SignInForm extends Component {
 }
 
 SignInForm.propTypes = {
-  handleSubmit: PropTypes.func
+  handleSubmit: PropTypes.func.isRequired
 };
 
 export default reduxForm({
-  form: 'signIn'
+  form: FORM_SIGIN
 })(SignInForm);
