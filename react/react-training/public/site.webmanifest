@@ -1,0 +1,20 @@
+{
+    "name": "Gabo's Tic Tac Toe",
+    "short_name": "TicTacToe",
+    "icons": [
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/android-chrome-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
+    ],
+    "start_url": "./",
+    "theme_color": "#333132",
+    "background_color": "#333132",
+    "display": "standalone"
+}

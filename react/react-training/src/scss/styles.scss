@@ -1,4 +1,8 @@
+@import 'variables/fonts';
+@import 'variables/colors';
+
 body {
-  font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
+  background-color: $mine-shaft;
+  color: $white;
+  font-family: $font-main;
 }
