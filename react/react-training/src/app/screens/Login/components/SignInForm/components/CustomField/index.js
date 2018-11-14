@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 import styles from '../../styles.scss';
 
-export function CustomField(props) {
-  const { input, type, className, placeholder, meta } = props;
-  return (
-    <div className={styles.input}>
-      <input {...input} type={type} className={className} placeholder={placeholder} />
-      {meta.error && meta.touched && <div className={styles.error}>{meta.error}</div>}
-    </div>
-  );
+export class CustomField extends Component {
+  render() {
+    const { input, type, className, placeholder, meta } = this.props;
+    return (
+      <div className={styles.input}>
+        <input {...input} type={type} className={className} placeholder={placeholder} />
+        {meta.error && meta.touched && <div className={styles.error}>{meta.error}</div>}
+      </div>
+    );
+  }
 }
 
 CustomField.propTypes = {

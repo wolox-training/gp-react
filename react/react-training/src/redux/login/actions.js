@@ -1,42 +1,42 @@
-import UserService from '@servicess/UserService.js';
+import UserService from '@services/UserService.js';
 
-export const actions = createTypes(
-  ['GET_USER_ID', 'GET_USER_SUCCESS', 'GET_USER_FAILURE', 'LOGIN', 'LOGIN_SUCCESS', 'LOGIN_FAILURE'],
-  '@@USERS'
-);
+export const actionTypes = {
+  login: 'LOGIN',
+  loginSuccess: 'LOGIN_SUCCESS',
+  loginFailure: 'LOGIN_FAILURE'
+};
 
-const actionCreators = {
-  getUserId: () => async dispatch => {
-    dispatch({ type: actions.GET_USER_ID });
-    const response = await UserService.getUserId();
-    if (response.ok) {
-      dispatch({
-        type: actions.GET_USER_SUCCESS,
-        payload: response.data
-      });
+export const actionsCreators = {
+  login: (username, password) => async dispatch => {
+    dispatch({ type: actionTypes.login });
+    const response = await UserService.login(username, password);
+    // console.log(response);
+    if (response) {
+      if (response.ok) {
+        const mySession = response && response.data && response.data.id ? response.data.id : 'Unknown Id';
+        dispatch({
+          type: actionTypes.loginSuccess,
+          userTryLogin: mySession
+        });
+      } else {
+        const myError =
+          response &&
+          response.data &&
+          response.data.error &&
+          response.data.error.message &&
+          response.data.error.statusCode
+            ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
+            : 'There was a problem trying to read the error from the response.';
+        dispatch({
+          type: actionTypes.loginFailure,
+          userTryLogin: myError
+        });
+      }
     } else {
       dispatch({
-        type: actions.GET_USER_FAILURE,
-        payload: response.problem
-      });
-    }
-  },
-
-  login: () => async dispatch => {
-    dispatch({ type: actions.LOGIN });
-    const response = await UserService.login();
-    if (response.ok) {
-      dispatch({
-        type: actions.LOGIN_SUCCESS,
-        payload: response.data
-      });
-    } else {
-      dispatch({
-        type: actions.LOGIN_FAILURE,
-        payload: response.problem
+        type: actionTypes.loginFailure,
+        userTryLogin: 'There was a problem trying to read the service login.'
       });
     }
   }
 };
-
-export default actionCreators;

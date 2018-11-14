@@ -1,26 +1,29 @@
 import { actionTypes } from './actions';
 
 const initialState = {
-  history: [
-    {
-      squares: Array(9).fill(null)
-    }
-  ],
-  stepNumber: 0,
-  xIsNext: true
+  userIsLogged: false,
+  userTryLogin: null
 };
 
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.makeMove:
+    case actionTypes.login:
       return {
         ...state,
-        ...action.payload
+        userIsLogged: false,
+        userTryLogin: null
       };
-    case actionTypes.makeJump:
+    case actionTypes.loginFailure:
       return {
         ...state,
-        ...action.payload
+        userIsLogged: false,
+        userTryLogin: action.userTryLogin
+      };
+    case actionTypes.loginSuccess:
+      return {
+        ...state,
+        userIsLogged: true,
+        userTryLogin: action.userTryLogin
       };
     default:
       return state;
