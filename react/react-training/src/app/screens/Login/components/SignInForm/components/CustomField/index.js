@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from '../../styles.scss';
 
-const CustomField = props => {
+export function CustomField(props) {
   const { input, type, className, placeholder, meta } = props;
   return (
     <div className={styles.input}>
@@ -10,6 +11,14 @@ const CustomField = props => {
       {meta.error && meta.touched && <div className={styles.error}>{meta.error}</div>}
     </div>
   );
-};
+}
 
-export default CustomField;
+CustomField.propTypes = {
+  className: PropTypes.string.isRequired,
+  meta: PropTypes.shape({
+    error: PropTypes.string,
+    touched: PropTypes.bool
+  }).isRequired,
+  placeholder: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
+};
