@@ -8,9 +8,7 @@ import { CustomField } from './components/CustomField/index';
 import { required, minLength, isEmail } from './validation';
 import styles from './styles.scss';
 
-function Layout(props) {
-  const { handleSubmit, userLoginError } = props;
-
+function Layout({ handleSubmit, userLoginError }) {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h2 className={styles.title}>Login</h2>
