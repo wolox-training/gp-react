@@ -2,20 +2,20 @@ import UserService from '@services/UserService.js';
 import { MSG_UNKNOWN_ID, ERROR_READING_RESPONSE, ERROR_LOGIN_SERVICE } from '@screens/Login/validation';
 
 export const actionTypes = {
-  login: 'LOGIN',
-  loginSuccess: 'LOGIN_SUCCESS',
-  loginFailure: 'LOGIN_FAILURE'
+  LOGIN: 'LOGIN',
+  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+  LOGIN_FAILURE: 'LOGIN_FAILURE'
 };
 
 export const actionsCreators = {
   login: (username, password) => async dispatch => {
-    dispatch({ type: actionTypes.login });
+    dispatch({ type: actionTypes.LOGIN });
     const response = await UserService.login(username, password);
     if (response && response.data) {
       if (response.ok) {
-        const mySession = response.data.id ? response.data.id : MSG_UNKNOWN_ID;
+        const mySession = response.data.id || MSG_UNKNOWN_ID;
         dispatch({
-          type: actionTypes.loginSuccess,
+          type: actionTypes.LOGIN_SUCCESS,
           userSession: mySession
         });
       } else {
@@ -24,13 +24,13 @@ export const actionsCreators = {
             ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
             : ERROR_READING_RESPONSE;
         dispatch({
-          type: actionTypes.loginFailure,
+          type: actionTypes.LOGIN_FAILURE,
           userLoginError: myError
         });
       }
     } else {
       dispatch({
-        type: actionTypes.loginFailure,
+        type: actionTypes.LOGIN_FAILURE,
         userLoginError: ERROR_LOGIN_SERVICE
       });
     }
