@@ -19,9 +19,6 @@ const Reducer = (state = initialState, action) => {
         ...action.payload
       };
     case actionTypes.LOGIN_SUCCESS:
-    case actionTypes.loginSuccess:
-      localStorage.setItem('userIsLogged', true.toString());
-      localStorage.setItem('userSession', action.userSession);
       return {
         ...state,
         ...action.payload

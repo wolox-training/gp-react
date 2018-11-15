@@ -16,6 +16,8 @@ export const actionsCreators = {
         const userIsLogged = true;
         const userLoginError = null;
         const userSession = response.data.id || MSG_UNKNOWN_ID;
+        localStorage.setItem('userIsLogged', true.toString());
+        localStorage.setItem('userSession', userSession);
         dispatch({
           type: actionTypes.LOGIN_SUCCESS,
           payload: {
@@ -31,6 +33,8 @@ export const actionsCreators = {
             ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
             : ERROR_READING_RESPONSE;
         const userSession = null;
+        localStorage.removeItem('userIsLogged');
+        localStorage.removeItem('userSession');
         dispatch({
           type: actionTypes.LOGIN_FAILURE,
           payload: {
@@ -44,6 +48,8 @@ export const actionsCreators = {
       const userIsLogged = false;
       const userLoginError = ERROR_LOGIN_SERVICE;
       const userSession = null;
+      localStorage.removeItem('userIsLogged');
+      localStorage.removeItem('userSession');
       dispatch({
         type: actionTypes.LOGIN_FAILURE,
         payload: {
