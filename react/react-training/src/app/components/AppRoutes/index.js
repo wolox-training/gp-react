@@ -11,7 +11,10 @@ import AuthRoute from './components/AuthRoute';
 
 class AppRoutes extends Component {
   render() {
-    const { userIsLogged } = this.props;
+    let { userIsLogged } = this.props;
+    if (!userIsLogged) {
+      userIsLogged = localStorage.getItem('userIsLogged') === 'true';
+    }
     return (
       <Router>
         <Switch>

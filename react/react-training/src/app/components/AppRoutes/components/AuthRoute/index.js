@@ -16,5 +16,5 @@ AuthComponent.propTypes = {
   component: PropTypes.func.isRequired,
   exact: PropTypes.bool.isRequired,
   path: PropTypes.string.isRequired,
-  userIsLogged: PropTypes.bool.isRequired
+  userIsLogged: PropTypes.bool
 };

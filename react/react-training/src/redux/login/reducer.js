@@ -23,6 +23,8 @@ const Reducer = (state = initialState, action) => {
         userSession: null
       };
     case actionTypes.loginSuccess:
+      localStorage.setItem('userIsLogged', true.toString());
+      localStorage.setItem('userSession', action.userSession);
       return {
         ...state,
         userIsLogged: true,
