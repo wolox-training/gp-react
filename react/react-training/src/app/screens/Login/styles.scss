@@ -13,12 +13,13 @@
 }
 
 .input {
+  text-align: center;
   font-size: $boxes-font-size;
   margin: 5px;
 }
 
 .button {
-  background-color: $green;
+  background-color: $earls-green;
   color: $mine-shaft;
   margin: 10px;
   font-size: $button-font-size;
@@ -26,4 +27,9 @@
 
 .link {
   text-decoration: none;
+}
+
+.error {
+  color: $green;
+  margin: 0 0 10px 10px;
 }

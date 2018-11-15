@@ -1,19 +1,15 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from 'react';
 
-import styles from './styles.scss';
+import LoginForm from './layout';
 
-const Login = () => (
-  <div className={styles.form}>
-    <h2 className={styles.title}>Login</h2>
-    <input className={styles.input} type="text" placeholder="Username" name="username" />
-    <input className={styles.input} type="password" placeholder="Password" name="password" />
-    <button className={styles.button}>
-      <Link className={styles.link} to="/game">
-        Sign in
-      </Link>
-    </button>
-  </div>
-);
+class Login extends Component {
+  handleSubmit = values => {
+    console.log(JSON.stringify(values, null, 4));
+  };
+
+  render() {
+    return <LoginForm onSubmit={this.handleSubmit} />;
+  }
+}
 
 export default Login;
