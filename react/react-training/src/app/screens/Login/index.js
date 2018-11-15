@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import SignInForm from './components/SignInForm';
+import LoginForm from './layout';
 
 class Login extends Component {
   handleSubmit = values => {
@@ -8,7 +8,7 @@ class Login extends Component {
   };
 
   render() {
-    return <SignInForm onSubmit={this.handleSubmit} />;
+    return <LoginForm onSubmit={this.handleSubmit} />;
   }
 }
 

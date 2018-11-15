@@ -1,8 +1,10 @@
 import React from 'react';
-import { Field } from 'redux-form';
+import { Field, reduxForm } from 'redux-form';
 import PropTypes from 'prop-types';
 
-import { CustomField } from './components/CustomField';
+import { FORM_SIGIN } from '@constants';
+
+import { CustomField } from './components/CustomField/index';
 import { required, minLength, isEmail } from './validation';
 import styles from './styles.scss';
 
@@ -39,4 +41,6 @@ Layout.propTypes = {
   handleSubmit: PropTypes.func.isRequired
 };
 
-export default Layout;
+export default reduxForm({
+  form: FORM_SIGIN
+})(Layout);
