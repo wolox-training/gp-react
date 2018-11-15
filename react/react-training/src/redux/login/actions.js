@@ -10,21 +10,16 @@ export const actionsCreators = {
   login: (username, password) => async dispatch => {
     dispatch({ type: actionTypes.login });
     const response = await UserService.login(username, password);
-    if (response) {
+    if (response && response.data) {
       if (response.ok) {
-        const mySession =
-          response && response.data && response.data.id ? response.data.id : 'Valid User - Unknown Id';
+        const mySession = response.data.id ? response.data.id : 'Valid User - Unknown Id';
         dispatch({
           type: actionTypes.loginSuccess,
           userSession: mySession
         });
       } else {
         const myError =
-          response &&
-          response.data &&
-          response.data.error &&
-          response.data.error.message &&
-          response.data.error.statusCode
+          response.data.error && response.data.error.message && response.data.error.statusCode
             ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
             : 'There was a problem trying to read the error from the response.';
         dispatch({

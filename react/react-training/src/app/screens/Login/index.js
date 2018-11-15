@@ -1,33 +1,25 @@
 import React, { Component } from 'react';
-import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
+import connect from 'react-redux/es/connect/connect';
 import { actionsCreators as Actions } from '@redux/login/actions';
 
-import SignInForm from './components/SignInForm';
+import LoginForm from './layout';
 
-class Login extends Component {
+class SignInForm extends Component {
   handleSubmit = values => {
     const { login } = this.props;
     login(values.username, values.password);
   };
 
   render() {
-    return (
-      <SignInForm
-        onSubmit={this.handleSubmit}
-        userIsLogged={this.props.userIsLogged}
-        userLoginError={this.props.userLoginError}
-        userSession={this.props.userSession}
-      />
-    );
+    const { userLoginError } = this.props;
+    return <LoginForm onSubmit={this.handleSubmit} userLoginError={userLoginError} />;
   }
 }
 
-Login.propTypes = {
+SignInForm.propTypes = {
   login: PropTypes.func.isRequired,
-  userIsLogged: PropTypes.bool,
-  userLoginError: PropTypes.string,
-  userSession: PropTypes.string
+  userLoginError: PropTypes.string
 };
 
 const mapStateToProps = store => ({
@@ -43,4 +35,4 @@ const mapDispatchToProps = dispatch => ({
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Login);
+)(SignInForm);
