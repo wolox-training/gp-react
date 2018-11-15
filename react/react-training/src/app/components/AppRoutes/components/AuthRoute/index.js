@@ -1,15 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Redirect, Route } from 'react-router';
 import PropTypes from 'prop-types';
 
-export default class AuthComponent extends Component {
-  render() {
-    const { component, exact, path, userIsLogged } = this.props;
-    if (userIsLogged) {
-      return <Redirect to="/game" />;
-    }
-    return <Route exact={exact} path={path} component={component} />;
+function AuthComponent({ component, exact, path, userIsLogged }) {
+  if (userIsLogged) {
+    return <Redirect to="/game" />;
   }
+  return <Route exact={exact} path={path} component={component} />;
 }
 
 AuthComponent.propTypes = {
@@ -18,3 +15,5 @@ AuthComponent.propTypes = {
   path: PropTypes.string.isRequired,
   userIsLogged: PropTypes.bool
 };
+
+export default AuthComponent;

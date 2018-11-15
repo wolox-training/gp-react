@@ -1,18 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from '../../styles.scss';
 
-export class CustomField extends Component {
-  render() {
-    const { input, type, className, placeholder, meta } = this.props;
-    return (
-      <div className={styles.input}>
-        <input {...input} type={type} className={className} placeholder={placeholder} />
-        {meta.error && meta.touched && <div className={styles.error}>{meta.error}</div>}
-      </div>
-    );
-  }
+function CustomField({ input, type, className, placeholder, meta }) {
+  return (
+    <div className={styles.input}>
+      <input {...input} type={type} className={className} placeholder={placeholder} />
+      {meta.error && meta.touched && <div className={styles.error}>{meta.error}</div>}
+    </div>
+  );
 }
 
 CustomField.propTypes = {
@@ -24,3 +21,5 @@ CustomField.propTypes = {
   placeholder: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired
 };
+
+export default CustomField;

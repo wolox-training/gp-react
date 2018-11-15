@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import { FORM_SIGIN } from '@constants';
 
-import { CustomField } from './components/CustomField/index';
+import CustomField from './components/CustomField/index';
 import { required, minLength, isEmail } from './validation';
 import styles from './styles.scss';
 

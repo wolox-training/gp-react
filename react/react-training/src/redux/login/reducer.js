@@ -8,28 +8,23 @@ const initialState = {
 
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.login:
+    case actionTypes.LOGIN:
       return {
         ...state,
-        userIsLogged: false,
-        userLoginError: null,
-        userSession: null
+        ...action.payload
       };
-    case actionTypes.loginFailure:
+    case actionTypes.LOGIN_FAILURE:
       return {
         ...state,
-        userIsLogged: false,
-        userLoginError: action.userLoginError,
-        userSession: null
+        ...action.payload
       };
+    case actionTypes.LOGIN_SUCCESS:
     case actionTypes.loginSuccess:
       localStorage.setItem('userIsLogged', true.toString());
       localStorage.setItem('userSession', action.userSession);
       return {
         ...state,
-        userIsLogged: true,
-        userLoginError: null,
-        userSession: action.userSession
+        ...action.payload
       };
     default:
       return state;
