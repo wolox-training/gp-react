@@ -1,4 +1,5 @@
 import UserService from '@services/UserService.js';
+import { MSG_UNKNOWN_ID, ERROR_READING_RESPONSE, ERROR_LOGIN_SERVICE } from '@screens/Login/validation';
 
 export const actionTypes = {
   login: 'LOGIN',
@@ -12,7 +13,7 @@ export const actionsCreators = {
     const response = await UserService.login(username, password);
     if (response && response.data) {
       if (response.ok) {
-        const mySession = response.data.id ? response.data.id : 'Valid User - Unknown Id';
+        const mySession = response.data.id ? response.data.id : MSG_UNKNOWN_ID;
         dispatch({
           type: actionTypes.loginSuccess,
           userSession: mySession
@@ -21,7 +22,7 @@ export const actionsCreators = {
         const myError =
           response.data.error && response.data.error.message && response.data.error.statusCode
             ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
-            : 'There was a problem trying to read the error from the response.';
+            : ERROR_READING_RESPONSE;
         dispatch({
           type: actionTypes.loginFailure,
           userLoginError: myError
@@ -30,7 +31,7 @@ export const actionsCreators = {
     } else {
       dispatch({
         type: actionTypes.loginFailure,
-        userLoginError: 'There was a problem trying to read the service login.'
+        userLoginError: ERROR_LOGIN_SERVICE
       });
     }
   }
