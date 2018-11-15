@@ -2,7 +2,8 @@ import { actionTypes } from './actions';
 
 const initialState = {
   userIsLogged: false,
-  userTryLogin: null
+  userLoginError: null,
+  userSession: null
 };
 
 const Reducer = (state = initialState, action) => {
@@ -11,19 +12,22 @@ const Reducer = (state = initialState, action) => {
       return {
         ...state,
         userIsLogged: false,
-        userTryLogin: null
+        userLoginError: null,
+        userSession: null
       };
     case actionTypes.loginFailure:
       return {
         ...state,
         userIsLogged: false,
-        userTryLogin: action.userTryLogin
+        userLoginError: action.userLoginError,
+        userSession: null
       };
     case actionTypes.loginSuccess:
       return {
         ...state,
         userIsLogged: true,
-        userTryLogin: action.userTryLogin
+        userLoginError: null,
+        userSession: action.userSession
       };
     default:
       return state;

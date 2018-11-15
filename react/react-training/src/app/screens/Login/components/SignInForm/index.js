@@ -8,16 +8,15 @@ import Form from './layout';
 
 class SignInForm extends Component {
   render() {
-    const { handleSubmit, userTryLogin, userIsLogged } = this.props;
-
-    return <Form handleSubmit={handleSubmit} userIsLogged={userIsLogged} userTryLogin={userTryLogin} />;
+    const { handleSubmit, userLoginError, userIsLogged } = this.props;
+    return <Form handleSubmit={handleSubmit} userIsLogged={userIsLogged} userLoginError={userLoginError} />;
   }
 }
 
 SignInForm.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
   userIsLogged: PropTypes.bool,
-  userTryLogin: PropTypes.string
+  userLoginError: PropTypes.string
 };
 
 export default reduxForm({

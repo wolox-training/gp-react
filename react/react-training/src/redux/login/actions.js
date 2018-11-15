@@ -10,13 +10,13 @@ export const actionsCreators = {
   login: (username, password) => async dispatch => {
     dispatch({ type: actionTypes.login });
     const response = await UserService.login(username, password);
-    // console.log(response);
     if (response) {
       if (response.ok) {
-        const mySession = response && response.data && response.data.id ? response.data.id : 'Unknown Id';
+        const mySession =
+          response && response.data && response.data.id ? response.data.id : 'Valid User - Unknown Id';
         dispatch({
           type: actionTypes.loginSuccess,
-          userTryLogin: mySession
+          userSession: mySession
         });
       } else {
         const myError =
@@ -29,13 +29,13 @@ export const actionsCreators = {
             : 'There was a problem trying to read the error from the response.';
         dispatch({
           type: actionTypes.loginFailure,
-          userTryLogin: myError
+          userLoginError: myError
         });
       }
     } else {
       dispatch({
         type: actionTypes.loginFailure,
-        userTryLogin: 'There was a problem trying to read the service login.'
+        userLoginError: 'There was a problem trying to read the service login.'
       });
     }
   }

@@ -1,19 +1,39 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import connect from 'react-redux/es/connect/connect';
 import { Switch, Route } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Game from '@screens/Game';
 import Login from '@screens/Login';
 import { ROUTES } from '@constants/routes.js';
 
-export default class AppRoutes extends Component {
+import AuthRoute from './components/AuthRoute';
+
+class AppRoutes extends Component {
   render() {
+    const { userIsLogged } = this.props;
     return (
       <Router>
         <Switch>
-          <Route exact path={ROUTES.HOME} component={Login} />
+          <AuthRoute exact path={ROUTES.HOME} component={Login} userIsLogged={userIsLogged} />
           <Route exact path={ROUTES.GAME} component={Game} />
         </Switch>
       </Router>
     );
   }
 }
+
+AppRoutes.propTypes = {
+  userIsLogged: PropTypes.bool
+};
+
+const mapStateToProps = store => ({
+  userIsLogged: store.LoginReducer.userIsLogged
+});
+
+const mapDispatchToProps = null;
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AppRoutes);

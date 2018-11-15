@@ -8,7 +8,7 @@ import styles from './styles.scss';
 
 class Layout extends Component {
   render() {
-    const { handleSubmit, userTryLogin } = this.props;
+    const { handleSubmit, userLoginError } = this.props;
 
     return (
       <form className={styles.form} onSubmit={handleSubmit}>
@@ -32,7 +32,7 @@ class Layout extends Component {
         <div>
           <button className={styles.button}>Sign in</button>
         </div>
-        {userTryLogin && <div className={styles.error}>{userTryLogin}</div>}
+        {userLoginError && <div className={styles.error}>{userLoginError}</div>}
       </form>
     );
   }
@@ -40,8 +40,7 @@ class Layout extends Component {
 
 Layout.propTypes = {
   handleSubmit: PropTypes.func.isRequired,
-  userIsLogged: PropTypes.bool,
-  userTryLogin: PropTypes.string
+  userLoginError: PropTypes.string
 };
 
 export default Layout;

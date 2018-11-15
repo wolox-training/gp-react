@@ -16,7 +16,8 @@ class Login extends Component {
       <SignInForm
         onSubmit={this.handleSubmit}
         userIsLogged={this.props.userIsLogged}
-        userTryLogin={this.props.userTryLogin}
+        userLoginError={this.props.userLoginError}
+        userSession={this.props.userSession}
       />
     );
   }
@@ -25,12 +26,14 @@ class Login extends Component {
 Login.propTypes = {
   login: PropTypes.func.isRequired,
   userIsLogged: PropTypes.bool,
-  userTryLogin: PropTypes.string
+  userLoginError: PropTypes.string,
+  userSession: PropTypes.string
 };
 
 const mapStateToProps = store => ({
   userIsLogged: store.LoginReducer.userIsLogged,
-  userTryLogin: store.LoginReducer.userTryLogin
+  userLoginError: store.LoginReducer.userLoginError,
+  userSession: store.LoginReducer.userSession
 });
 
 const mapDispatchToProps = dispatch => ({
