@@ -13,25 +13,44 @@ export const actionsCreators = {
     const response = await UserService.login(username, password);
     if (response && response.data) {
       if (response.ok) {
-        const mySession = response.data.id || MSG_UNKNOWN_ID;
+        const userIsLogged = true;
+        const userLoginError = null;
+        const userSession = response.data.id || MSG_UNKNOWN_ID;
         dispatch({
           type: actionTypes.LOGIN_SUCCESS,
-          userSession: mySession
+          payload: {
+            userIsLogged,
+            userLoginError,
+            userSession
+          }
         });
       } else {
-        const myError =
+        const userIsLogged = false;
+        const userLoginError =
           response.data.error && response.data.error.message && response.data.error.statusCode
             ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
             : ERROR_READING_RESPONSE;
+        const userSession = null;
         dispatch({
           type: actionTypes.LOGIN_FAILURE,
-          userLoginError: myError
+          payload: {
+            userIsLogged,
+            userLoginError,
+            userSession
+          }
         });
       }
     } else {
+      const userIsLogged = false;
+      const userLoginError = ERROR_LOGIN_SERVICE;
+      const userSession = null;
       dispatch({
         type: actionTypes.LOGIN_FAILURE,
-        userLoginError: ERROR_LOGIN_SERVICE
+        payload: {
+          userIsLogged,
+          userLoginError,
+          userSession
+        }
       });
     }
   }
