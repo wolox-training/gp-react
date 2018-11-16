@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import connect from 'react-redux/es/connect/connect';
-import { Switch, Route } from 'react-router';
+import { Switch } from 'react-router';
 import { BrowserRouter as Router } from 'react-router-dom';
 import Game from '@screens/Game';
 import Login from '@screens/Login';
@@ -19,7 +19,7 @@ class AppRoutes extends Component {
       <Router>
         <Switch>
           <AuthRoute exact path={ROUTES.HOME} component={Login} userIsLogged={userIsLogged} />
-          <Route exact path={ROUTES.GAME} component={Game} />
+          <AuthRoute exact path={ROUTES.GAME} component={Game} userIsLogged={userIsLogged} />
         </Switch>
       </Router>
     );

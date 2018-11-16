@@ -1,4 +1,8 @@
 export const ROUTES = {
+  // Pages
   HOME: '/',
-  GAME: '/game/'
+  GAME: '/game/',
+  // Authentication
+  LOGIN: '/',
+  HOME_LOGGED: '/game/'
 };

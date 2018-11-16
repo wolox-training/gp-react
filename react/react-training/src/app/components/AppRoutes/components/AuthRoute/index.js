@@ -1,10 +1,19 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router';
 import PropTypes from 'prop-types';
+import { ROUTES } from '@constants/routes.js';
 
 function AuthComponent({ component, exact, path, userIsLogged }) {
-  if (userIsLogged) {
-    return <Redirect to="/game" />;
+  if (!userIsLogged) {
+    if (path === ROUTES.HOME || path === ROUTES.LOGIN) {
+      return <Route exact={exact} path={path} component={component} />;
+    }
+    return <Redirect to={ROUTES.LOGIN} />;
+  }
+
+  // The user is logged
+  if (path === ROUTES.LOGIN) {
+    return <Redirect to={ROUTES.HOME_LOGGED} />;
   }
   return <Route exact={exact} path={path} component={component} />;
 }
