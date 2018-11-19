@@ -10,12 +10,15 @@ export const actionTypes = {
 export const actionsCreators = {
   login: (username, password) => async dispatch => {
     dispatch({ type: actionTypes.LOGIN });
+    let userIsLogged;
+    let userLoginError;
+    let userSession;
     const response = await UserService.login(username, password);
     if (response.ok) {
-      const userIsLogged = true;
-      const userLoginError = null;
-      const userSession = response.data.id || MSG_UNKNOWN_ID;
-      localStorage.setItem('userIsLogged', true.toString());
+      userIsLogged = true;
+      userLoginError = null;
+      userSession = response.data.id || MSG_UNKNOWN_ID;
+      localStorage.setItem('userIsLogged', `${userIsLogged}`);
       localStorage.setItem('userSession', userSession);
       dispatch({
         type: actionTypes.LOGIN_SUCCESS,
@@ -26,12 +29,12 @@ export const actionsCreators = {
         }
       });
     } else {
-      const userIsLogged = false;
-      const userLoginError =
+      userIsLogged = false;
+      userLoginError =
         response.data && response.data.error && response.data.error.message && response.data.error.statusCode
           ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
           : ERROR_READING_RESPONSE;
-      const userSession = null;
+      userSession = null;
       localStorage.removeItem('userIsLogged');
       localStorage.removeItem('userSession');
       dispatch({

@@ -34,9 +34,7 @@ const mapStateToProps = store => ({
   userIsLogged: store.LoginReducer.userIsLogged
 });
 
-const mapDispatchToProps = null;
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(AppRoutes);
