@@ -11,5 +11,3 @@ export const isEmail = value =>
 export const MSG_UNKNOWN_ID = 'Valid User - Unknown Id';
 
 export const ERROR_READING_RESPONSE = 'There was a problem trying to read the error from the response.';
-
-export const ERROR_LOGIN_SERVICE = 'There was a problem trying to read the login service.';
