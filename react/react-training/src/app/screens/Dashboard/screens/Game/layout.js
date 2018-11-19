@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 import { calculateWinner } from '@utils';
 
-import Board from './components/Board';
-import HistoryItem from './components/HistoryItem';
+import Board from './components/Board/index';
+import HistoryItem from './components/HistoryItem/index';
 import styles from './styles.scss';
 
 class Layout extends Component {
@@ -14,11 +14,11 @@ class Layout extends Component {
   };
 
   renderHistory = (step, makeMove) => (
-    <HistoryItem key={`item-${makeMove}`} makeMove={makeMove} makeJump={this.makeJump} />
+    <HistoryItem key={`item-${makeMove}`} makeJump={this.makeJump} makeMove={makeMove} />
   );
 
   render() {
-    const { history, stepNumber, xIsNext, onClick } = this.props;
+    const { history, onClick, stepNumber, xIsNext } = this.props;
     const current = history[stepNumber];
     const winner = calculateWinner(current.squares);
 
@@ -26,7 +26,8 @@ class Layout extends Component {
 
     return (
       <div className={styles.game}>
-        <Board squares={current.squares} onClick={onClick} />
+        <h2 className={styles.title}>Tic Tac Toe</h2>
+        <Board onClick={onClick} squares={current.squares} />
         <div className={styles.info}>
           <div>{status}</div>
           <ol>{history.map(this.renderHistory)}</ol>

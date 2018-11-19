@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import React, { Component } from 'react';
 import { actionsCreators as Actions } from '@redux/game/actions';
+import { connect } from 'react-redux';
 
 import { calculateWinner } from '@utils';
 
@@ -9,7 +9,7 @@ import Game from './layout';
 
 class GameContainer extends Component {
   handleClick = i => {
-    const { history, stepNumber, xIsNext, makeMove } = this.props;
+    const { history, makeMove, stepNumber, xIsNext } = this.props;
     const newHistory = history.slice(0, stepNumber + 1);
     const current = newHistory[newHistory.length - 1];
     const squares = current.squares.slice();
@@ -24,15 +24,15 @@ class GameContainer extends Component {
   };
 
   render() {
-    const { history, stepNumber, xIsNext, makeMove, makeJump } = this.props;
+    const { history, makeJump, makeMove, stepNumber, xIsNext } = this.props;
     return (
       <Game
         history={history}
+        makeJump={makeJump}
+        makeMove={makeMove}
+        onClick={this.handleClick}
         stepNumber={stepNumber}
         xIsNext={xIsNext}
-        onClick={this.handleClick}
-        makeMove={makeMove}
-        makeJump={makeJump}
       />
     );
   }
@@ -57,8 +57,8 @@ const mapStateToProps = ({ GameReducer }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  makeMove: (history, squares) => dispatch(Actions.makeMove(history, squares)),
-  makeJump: stepNumber => dispatch(Actions.makeJump(stepNumber))
+  makeJump: stepNumber => dispatch(Actions.makeJump(stepNumber)),
+  makeMove: (history, squares) => dispatch(Actions.makeMove(history, squares))
 });
 
 export default connect(

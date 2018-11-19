@@ -23,6 +23,16 @@ const Reducer = (state = initialState, action) => {
         ...state,
         ...action.payload
       };
+    case actionTypes.LOGIN_VERIFY:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.LOGOUT:
+      return {
+        ...state,
+        ...action.payload
+      };
     default:
       return state;
   }

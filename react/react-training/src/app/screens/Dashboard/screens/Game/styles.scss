@@ -1,0 +1,18 @@
+@import 'variables/colors';
+@import 'variables/fonts';
+
+.game {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.info {
+  margin-left: 20px;
+}
+
+.title {
+  color: $blue;
+  font-size: $title-size;
+  text-align: center;
+}

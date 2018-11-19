@@ -1,0 +1,36 @@
+@import 'variables/colors';
+@import 'variables/fonts';
+
+.bar {
+  background-color: $mine-shaft-dark;
+  box-shadow: 0 10px 15px -5px $black;
+  width: 100%;
+}
+
+.list {
+  color: $boulder;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 2px 0 2px 0;
+}
+
+.item {
+  cursor: pointer;
+  font-size: $top-bar-size;
+  padding: 15px;
+}
+
+.item:hover, .item a:hover{
+  color: $blue-picton;
+}
+
+.link {
+  color: $white;
+  padding-left: 5px;
+  text-decoration: none;
+}
+
+.active {
+  color: $blue;
+}

@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 class HistoryItem extends Component {
   handleClick = () => {
-    const { makeMove, makeJump } = this.props;
+    const { makeJump, makeMove } = this.props;
     makeJump(makeMove);
   };
 
@@ -19,8 +19,8 @@ class HistoryItem extends Component {
 }
 
 HistoryItem.propTypes = {
-  makeMove: PropTypes.number.isRequired,
-  makeJump: PropTypes.func.isRequired
+  makeJump: PropTypes.func.isRequired,
+  makeMove: PropTypes.number.isRequired
 };
 
 export default HistoryItem;

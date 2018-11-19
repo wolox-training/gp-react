@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
 import Square from './components/Square/index';
 import styles from './styles.scss';
@@ -12,7 +12,7 @@ class Board extends Component {
 
   renderSquare = i => {
     const { squares } = this.props;
-    return <Square value={squares[i]} squareNumber={i} onClick={this.handleClick} />;
+    return <Square onClick={this.handleClick} squareNumber={i} value={squares[i]} />;
   };
 
   render() {

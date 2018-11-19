@@ -1,8 +1,10 @@
 export const ROUTES = {
-  // Pages
-  HOME: '/',
-  GAME: '/game/',
   // Authentication
   LOGIN: '/',
-  HOME_LOGGED: '/game/'
+  HOME_LOGGED: '/game/',
+  // Dashboard Pages
+  HOME: '/',
+  GAME: '/game/',
+  LOGOUT: '/logout/',
+  PROFILE: '/profile/'
 };

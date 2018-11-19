@@ -1,0 +1,8 @@
+@import 'variables/colors';
+@import 'variables/fonts';
+
+.title {
+  color: $blue;
+  font-size: $title-size;
+  text-align: center;
+}
