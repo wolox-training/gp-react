@@ -4,13 +4,11 @@ import PropTypes from 'prop-types';
 
 import { FORM_SIGIN } from '@constants';
 
-import { CustomField } from './components/CustomField/index';
+import CustomField from './components/CustomField/index';
 import { required, minLength, isEmail } from './validation';
 import styles from './styles.scss';
 
-function Layout(props) {
-  const { handleSubmit } = props;
-
+function Layout({ handleSubmit, userLoginError }) {
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h2 className={styles.title}>Login</h2>
@@ -33,12 +31,14 @@ function Layout(props) {
       <div>
         <button className={styles.button}>Sign in</button>
       </div>
+      {userLoginError && <div className={styles.error}>{userLoginError}</div>}
     </form>
   );
 }
 
 Layout.propTypes = {
-  handleSubmit: PropTypes.func.isRequired
+  handleSubmit: PropTypes.func.isRequired,
+  userLoginError: PropTypes.string
 };
 
 export default reduxForm({

@@ -1,15 +1,38 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import connect from 'react-redux/es/connect/connect';
+import { actionsCreators as Actions } from '@redux/login/actions';
 
 import LoginForm from './layout';
 
-class Login extends Component {
+class SignInForm extends Component {
   handleSubmit = values => {
-    console.log(JSON.stringify(values, null, 4));
+    const { login } = this.props;
+    login(values.username, values.password);
   };
 
   render() {
-    return <LoginForm onSubmit={this.handleSubmit} />;
+    const { userLoginError } = this.props;
+    return <LoginForm onSubmit={this.handleSubmit} userLoginError={userLoginError} />;
   }
 }
 
-export default Login;
+SignInForm.propTypes = {
+  login: PropTypes.func.isRequired,
+  userLoginError: PropTypes.string
+};
+
+const mapStateToProps = store => ({
+  userIsLogged: store.LoginReducer.userIsLogged,
+  userLoginError: store.LoginReducer.userLoginError,
+  userSession: store.LoginReducer.userSession
+});
+
+const mapDispatchToProps = dispatch => ({
+  login: (username, password) => dispatch(Actions.login(username, password))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignInForm);

@@ -9,6 +9,7 @@
         "@components": "./src/app/components",
         "@constants": "./src/constants",
         "@redux": "./src/redux",
+        "@services": "./src/services",
         "@screens": "./src/app/screens",
         "@utils": "./src/utils"
       }

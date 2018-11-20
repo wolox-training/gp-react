@@ -7,3 +7,7 @@ export const minLength = value =>
 
 export const isEmail = value =>
   validateEmail(value) ? undefined : "Please verify your email. It's not valid.";
+
+export const MSG_UNKNOWN_ID = 'Valid User - Unknown Id';
+
+export const ERROR_READING_RESPONSE = 'There was a problem trying to read the error from the response.';

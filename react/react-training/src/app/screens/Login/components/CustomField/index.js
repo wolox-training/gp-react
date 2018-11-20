@@ -3,8 +3,7 @@ import PropTypes from 'prop-types';
 
 import styles from '../../styles.scss';
 
-export function CustomField(props) {
-  const { input, type, className, placeholder, meta } = props;
+function CustomField({ input, type, className, placeholder, meta }) {
   return (
     <div className={styles.input}>
       <input {...input} type={type} className={className} placeholder={placeholder} />
@@ -22,3 +21,5 @@ CustomField.propTypes = {
   placeholder: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired
 };
+
+export default CustomField;
