@@ -6,4 +6,4 @@ export const ERROR_404 = 'Sorry. 404 page. Don`t cry.';
 
 export const OFFLINE_MESSAGE = 'Sorry. We are offline. Please come back in a few minutes.';
 
-export const OFFLINE_WE_ARE = true;
+export const OFFLINE_WE_ARE = false;
