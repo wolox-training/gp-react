@@ -1,7 +1,7 @@
 import { actionTypes } from './actions';
 
 const initialState = {
-  userIsLogged: false,
+  userIsLogged: localStorage.getItem('userIsLogged') === 'true',
   userLoginError: null,
   userSession: null
 };

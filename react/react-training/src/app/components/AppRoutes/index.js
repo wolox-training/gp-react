@@ -1,7 +1,7 @@
-import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { Switch } from 'react-router';
 import Login from '@screens/Login';
 import Game from '@screens/Game';
@@ -31,9 +31,4 @@ const mapStateToProps = store => ({
   userIsLogged: store.LoginReducer.userIsLogged
 });
 
-const mapDispatchToProps = null;
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(AppRoutes);
+export default connect(mapStateToProps)(AppRoutes);
