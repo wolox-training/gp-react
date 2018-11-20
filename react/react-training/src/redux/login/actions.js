@@ -24,7 +24,6 @@ export const actionsCreators = {
         type: actionTypes.LOGIN_SUCCESS,
         payload: {
           userIsLogged,
-          userLoginError,
           userSession
         }
       });
@@ -41,8 +40,7 @@ export const actionsCreators = {
         type: actionTypes.LOGIN_FAILURE,
         payload: {
           userIsLogged,
-          userLoginError,
-          userSession
+          userLoginError
         }
       });
     }
