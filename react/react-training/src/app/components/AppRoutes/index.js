@@ -6,6 +6,7 @@ import { Route, Switch } from 'react-router';
 import Dashboard from '@screens/Dashboard';
 import Error404 from '@screens/Error404';
 import Login from '@screens/Login';
+import Game from '@screens/Game';
 import { ROUTES } from '@constants/routes.js';
 
 import AuthRoute from './components/AuthRoute';
@@ -36,9 +37,7 @@ const mapStateToProps = store => ({
   userIsLogged: store.LoginReducer.userIsLogged
 });
 
-const mapDispatchToProps = null;
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  null
 )(AppRoutes);

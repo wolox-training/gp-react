@@ -1,5 +1,5 @@
 import UserService from '@services/UserService.js';
-import { ERROR_LOGIN_SERVICE, ERROR_READING_RESPONSE, MSG_UNKNOWN_ID } from '@screens/Login/validation';
+import { ERROR_READING_RESPONSE, MSG_UNKNOWN_ID } from '@screens/Login/validation';
 
 export const actionTypes = {
   LOGIN: 'LOGIN',
@@ -12,52 +12,37 @@ export const actionTypes = {
 export const actionsCreators = {
   login: (username, password) => async dispatch => {
     dispatch({ type: actionTypes.LOGIN });
+    let userIsLogged;
+    let userLoginError;
+    let userSession;
     const response = await UserService.login(username, password);
-    if (response && response.data) {
-      if (response.ok) {
-        const userIsLogged = true;
-        const userLoginError = null;
-        const userSession = response.data.id || MSG_UNKNOWN_ID;
-        localStorage.setItem('userIsLogged', true.toString());
-        localStorage.setItem('userSession', userSession);
-        dispatch({
-          type: actionTypes.LOGIN_SUCCESS,
-          payload: {
-            userIsLogged,
-            userLoginError,
-            userSession
-          }
-        });
-      } else {
-        const userIsLogged = false;
-        const userLoginError =
-          response.data.error && response.data.error.message && response.data.error.statusCode
-            ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
-            : ERROR_READING_RESPONSE;
-        const userSession = null;
-        localStorage.removeItem('userIsLogged');
-        localStorage.removeItem('userSession');
-        dispatch({
-          type: actionTypes.LOGIN_FAILURE,
-          payload: {
-            userIsLogged,
-            userLoginError,
-            userSession
-          }
-        });
-      }
+    if (response.ok) {
+      userIsLogged = true;
+      userLoginError = null;
+      userSession = response.data.id || MSG_UNKNOWN_ID;
+      localStorage.setItem('userIsLogged', `${userIsLogged}`);
+      localStorage.setItem('userSession', userSession);
+      dispatch({
+        type: actionTypes.LOGIN_SUCCESS,
+        payload: {
+          userIsLogged,
+          userSession
+        }
+      });
     } else {
-      const userIsLogged = false;
-      const userLoginError = ERROR_LOGIN_SERVICE;
-      const userSession = null;
+      userIsLogged = false;
+      userLoginError =
+        response.data && response.data.error && response.data.error.message && response.data.error.statusCode
+          ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
+          : ERROR_READING_RESPONSE;
+      userSession = null;
       localStorage.removeItem('userIsLogged');
       localStorage.removeItem('userSession');
       dispatch({
         type: actionTypes.LOGIN_FAILURE,
         payload: {
           userIsLogged,
-          userLoginError,
-          userSession
+          userLoginError
         }
       });
     }
