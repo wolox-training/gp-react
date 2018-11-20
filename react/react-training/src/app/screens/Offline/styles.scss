@@ -1,0 +1,12 @@
+@import 'variables/colors';
+@import 'variables/fonts';
+
+.title {
+  color: $blue;
+  font-size: $sub-title-size;
+  text-align: center;
+}
+
+.image {
+  text-align: center;
+}

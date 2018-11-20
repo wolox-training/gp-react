@@ -6,13 +6,20 @@ import { Route, Switch } from 'react-router';
 import Dashboard from '@screens/Dashboard';
 import Error404 from '@screens/Error404';
 import Login from '@screens/Login';
-import Game from '@screens/Game';
+import Offline from '@screens/Offline';
 import { ROUTES } from '@constants/routes.js';
+
+import { OFFLINE_WE_ARE } from '@constants';
 
 import AuthRoute from './components/AuthRoute';
 
 class AppRoutes extends Component {
   render() {
+    if (OFFLINE_WE_ARE) {
+      return <Offline />;
+    }
+
+    // We are online...
     let { userIsLogged } = this.props;
     if (!userIsLogged) {
       userIsLogged = localStorage.getItem('userIsLogged') === 'true';
