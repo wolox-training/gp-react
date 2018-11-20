@@ -16,10 +16,10 @@
   cursor: pointer;
   font-size: $top-bar-size;
   padding: 15px;
-}
 
-.item:hover, .item a:hover{
-  color: $blue-picton;
+  &:hover, & a:hover {
+    color: $blue-picton;
+  }
 }
 
 .link {
