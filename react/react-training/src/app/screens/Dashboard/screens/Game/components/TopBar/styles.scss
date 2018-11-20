@@ -4,15 +4,12 @@
 .bar {
   background-color: $mine-shaft-dark;
   box-shadow: 0 10px 15px -5px $black;
-  width: 100%;
-}
-
-.list {
   color: $boulder;
   display: flex;
   justify-content: center;
   list-style: none;
   padding: 2px 0 2px 0;
+  width: 100%;
 }
 
 .item {
