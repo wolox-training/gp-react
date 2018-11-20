@@ -20,10 +20,7 @@ class AppRoutes extends Component {
     }
 
     // We are online...
-    let { userIsLogged } = this.props;
-    if (!userIsLogged) {
-      userIsLogged = localStorage.getItem('userIsLogged') === 'true';
-    }
+    const { userIsLogged } = this.props;
     return (
       <Router>
         <Switch>
@@ -44,7 +41,4 @@ const mapStateToProps = store => ({
   userIsLogged: store.LoginReducer.userIsLogged
 });
 
-export default connect(
-  mapStateToProps,
-  null
-)(AppRoutes);
+export default connect(mapStateToProps)(AppRoutes);
