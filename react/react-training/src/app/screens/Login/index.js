@@ -6,6 +6,11 @@ import { actionsCreators as Actions } from '@redux/login/actions';
 import LoginForm from './layout';
 
 class SignInForm extends Component {
+  componentDidMount() {
+    const { loginVerify } = this.props;
+    loginVerify();
+  }
+
   handleSubmit = values => {
     const { login } = this.props;
     login(values.username, values.password);
@@ -19,6 +24,7 @@ class SignInForm extends Component {
 
 SignInForm.propTypes = {
   login: PropTypes.func.isRequired,
+  loginVerify: PropTypes.func.isRequired,
   userLoginError: PropTypes.string
 };
 
@@ -29,7 +35,8 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  login: (username, password) => dispatch(Actions.login(username, password))
+  login: (username, password) => dispatch(Actions.login(username, password)),
+  loginVerify: () => dispatch(Actions.loginVerify())
 });
 
 export default connect(

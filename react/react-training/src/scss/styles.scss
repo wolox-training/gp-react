@@ -1,7 +1,9 @@
+@import url("https://use.fontawesome.com/releases/v5.5.0/css/all.css");
 @import 'variables/fonts';
 @import 'variables/colors';
 
 body {
+  align-items: center;
   background-color: $mine-shaft;
   color: $white;
   font-family: $font-main;

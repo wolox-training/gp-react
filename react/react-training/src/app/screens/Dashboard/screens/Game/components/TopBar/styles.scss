@@ -1,0 +1,47 @@
+@import 'variables/colors';
+@import 'variables/fonts';
+
+.bar {
+  background-color: $mine-shaft-dark;
+  box-shadow: 0 10px 15px -5px $black;
+  color: $boulder;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin-bottom: 20px;
+  padding: 2px 0 2px 0;
+  width: 100%;
+}
+
+.item {
+  cursor: pointer;
+  font-size: $top-bar-size;
+  padding: 15px;
+
+  &:hover, & a:hover {
+    color: $blue-picton;
+  }
+}
+
+.link {
+  color: $white;
+  padding-left: 5px;
+  text-decoration: none;
+}
+
+.active {
+  color: $blue;
+}
+
+.linkButton {
+  background-color: transparent;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  font-size: $top-bar-size;
+  padding: 0 0 0 3px;
+
+  &:hover {
+    color: $blue-picton;
+  }
+}

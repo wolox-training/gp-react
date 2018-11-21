@@ -1,10 +1,12 @@
 import UserService from '@services/UserService.js';
-import { MSG_UNKNOWN_ID, ERROR_READING_RESPONSE } from '@screens/Login/validation';
+import { ERROR_READING_RESPONSE, MSG_UNKNOWN_ID } from '@screens/Login/validation';
 
 export const actionTypes = {
   LOGIN: 'LOGIN',
+  LOGIN_FAILURE: 'LOGIN_FAILURE',
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
-  LOGIN_FAILURE: 'LOGIN_FAILURE'
+  LOGIN_VERIFY: 'LOGIN_VERIFY',
+  LOGOUT: 'LOGOUT'
 };
 
 export const actionsCreators = {
@@ -44,5 +46,31 @@ export const actionsCreators = {
         }
       });
     }
+  },
+
+  loginVerify: () => dispatch => {
+    const userIsLogged = localStorage.getItem('userIsLogged') === 'true';
+    const userSession = userIsLogged ? localStorage.getItem('userSession') : false;
+    dispatch({
+      type: actionTypes.LOGIN_VERIFY,
+      payload: {
+        userIsLogged,
+        userSession
+      }
+    });
+  },
+
+  logout: () => dispatch => {
+    localStorage.removeItem('userIsLogged');
+    localStorage.removeItem('userSession');
+    const userIsLogged = false;
+    const userSession = null;
+    dispatch({
+      type: actionTypes.LOGOUT,
+      payload: {
+        userIsLogged,
+        userSession
+      }
+    });
   }
 };

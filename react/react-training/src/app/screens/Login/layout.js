@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 
 import { FORM_SIGIN } from '@constants';
 
+import styles from './styles.scss';
 import CustomField from './components/CustomField/index';
 import { required, minLength, isEmail } from './validation';
-import styles from './styles.scss';
 
 function Layout({ handleSubmit, userLoginError }) {
   return (

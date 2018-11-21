@@ -1,22 +1,32 @@
+import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { Switch } from 'react-router';
+import { Route, Switch } from 'react-router';
+import Dashboard from '@screens/Dashboard';
+import Error404 from '@screens/Error404';
 import Login from '@screens/Login';
-import Game from '@screens/Game';
+import Offline from '@screens/Offline';
 import { ROUTES } from '@constants/routes.js';
+
+import { OFFLINE_WE_ARE } from '@constants';
 
 import AuthRoute from './components/AuthRoute';
 
 class AppRoutes extends Component {
   render() {
+    if (OFFLINE_WE_ARE) {
+      return <Offline />;
+    }
+
+    // We are online...
     const { userIsLogged } = this.props;
     return (
       <Router>
         <Switch>
           <AuthRoute exact path={ROUTES.HOME} component={Login} userIsLogged={userIsLogged} />
-          <AuthRoute exact path={ROUTES.GAME} component={Game} userIsLogged={userIsLogged} />
+          <AuthRoute exact path={ROUTES.GAME} component={Dashboard} userIsLogged={userIsLogged} />
+          <Route component={Error404} />
         </Switch>
       </Router>
     );

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import AppRoutes from '@components/AppRoutes';
 import { Provider } from 'react-redux';
 import { store } from '@redux/store';
+
 import './scss/styles.scss';
 
 function App() {

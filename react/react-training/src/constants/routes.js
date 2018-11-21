@@ -4,5 +4,7 @@ export const ROUTES = {
   HOME_LOGGED: '/game/',
   // Dashboard Pages
   HOME: '/',
-  GAME: '/game/'
+  GAME: '/game/',
+  LOGOUT: '/logout/',
+  PROFILE: '/profile/'
 };
