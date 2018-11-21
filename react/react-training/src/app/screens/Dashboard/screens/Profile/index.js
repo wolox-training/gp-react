@@ -1,50 +1,49 @@
-import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { actionsCreators as Actions } from '@redux/login/actions';
 
-import photo from './assets/ profilePic9.jpg';
-import styles from './styles.scss';
+import Card from './layout';
 
-function Profile() {
-  const nameUser = 'Johana Uribe';
-  return (
-    <Fragment>
-      <div>
-        <h2 className={styles.title}>{nameUser}</h2>
-      </div>
-      <div className={styles.card}>
-        <div className={styles.framework}>
-          <img
-            alt={nameUser}
-            className={styles.photo}
-            height={photo.height}
-            src={photo}
-            width={photo.width}
-          />
-        </div>
-        <div className={styles.info}>
-          <p className={styles.text}>
-            <span className={styles.user}>Gender:</span> Female
-            <br />
-            <span className={styles.user}>Region:</span> Colombia
-            <br />
-            <span className={styles.user}>Phone:</span>{' '}
-            <a href="tel:(514) 706 7652}" className={styles.link}>
-              (514) 706 7652
-            </a>
-            <br />
-            <span className={styles.user}>Birthday:</span> 04/09/1992
-            <br />
-            <span className={styles.user}>Email:</span>
-            &nbsp;
-            <a href="johanauribe@example.com" className={styles.link}>
-              johanauribe@example.com
-            </a>
-            <br />
-            <span className={styles.user}>Password:</span> Uribe92~
-          </p>
-        </div>
-      </div>
-    </Fragment>
-  );
+class Profile extends Component {
+  componentDidMount() {
+    const userId = 1;
+    const { getUser } = this.props;
+    getUser(userId);
+  }
+
+  render() {
+    const { userData } = this.props;
+    return <Card userData={userData} />;
+  }
 }
 
-export default Profile;
+Profile.propTypes = {
+  getUser: PropTypes.func.isRequired,
+  userData: PropTypes.shape({
+    birthday: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired,
+    gender: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired,
+    phone: PropTypes.string.isRequired,
+    region: PropTypes.string.isRequired,
+    surname: PropTypes.string.isRequired,
+    username: PropTypes.string.isRequired
+  })
+};
+
+const mapStateToProps = store => ({
+  userId: store.LoginReducer.userId,
+  userData: store.LoginReducer.userData,
+  userDataError: store.LoginReducer.userDataError
+});
+
+const mapDispatchToProps = dispatch => ({
+  getUser: userId => dispatch(Actions.getUser(userId))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Profile);

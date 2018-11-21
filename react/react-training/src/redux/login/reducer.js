@@ -3,11 +3,29 @@ import { actionTypes } from './actions';
 const initialState = {
   userIsLogged: localStorage.getItem('userIsLogged') === 'true',
   userLoginError: null,
-  userSession: null
+  userSession: null,
+  userId: null,
+  userData: null,
+  userDataError: null
 };
 
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
+    case actionTypes.GET_USER:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.GET_USER_FAILURE:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.GET_USER_SUCCESS:
+      return {
+        ...state,
+        ...action.payload
+      };
     case actionTypes.LOGIN:
       return {
         ...state,

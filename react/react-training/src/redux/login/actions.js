@@ -1,15 +1,51 @@
 import UserService from '@services/UserService.js';
-import { ERROR_READING_RESPONSE, MSG_UNKNOWN_ID } from '@screens/Login/validation';
+import { ERROR_READING_RESPONSE, MSG_UNKNOWN_ID, MSG_UNKNOWN_USER } from '@screens/Login/validation';
 
 export const actionTypes = {
+  // Get User Service
+  GET_USER: 'GET_USER',
+  GET_USER_FAILURE: 'GET_USER_FAILURE',
+  GET_USER_SUCCESS: 'GET_USER_SUCCESS',
+
+  // Login Service
   LOGIN: 'LOGIN',
   LOGIN_FAILURE: 'LOGIN_FAILURE',
   LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+
+  // Other actions
   LOGIN_VERIFY: 'LOGIN_VERIFY',
   LOGOUT: 'LOGOUT'
 };
 
 export const actionsCreators = {
+  getUser: userId => async dispatch => {
+    dispatch({ type: actionTypes.GET_USER });
+    let userData;
+    let userDataError;
+    const response = await UserService.getUser(userId);
+    if (response.ok) {
+      userData = response.data || MSG_UNKNOWN_USER;
+      dispatch({
+        type: actionTypes.GET_USER_SUCCESS,
+        payload: {
+          userId,
+          userData
+        }
+      });
+    } else {
+      userDataError =
+        response.data && response.data.error && response.data.error.message && response.data.error.statusCode
+          ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
+          : ERROR_READING_RESPONSE;
+      dispatch({
+        type: actionTypes.GET_USER_FAILURE,
+        payload: {
+          userDataError
+        }
+      });
+    }
+  },
+
   login: (username, password) => async dispatch => {
     dispatch({ type: actionTypes.LOGIN });
     let userIsLogged;
