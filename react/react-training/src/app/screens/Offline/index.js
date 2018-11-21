@@ -9,8 +9,8 @@ function Offline() {
   return (
     <div>
       <h2 className={styles.title}>{OFFLINE_MESSAGE}</h2>
-      <p className={styles.image}>
-        <img alt={OFFLINE_MESSAGE} height={offline.height} src={offline} width={offline.width} />
+      <p className={styles.text}>
+        <img alt={OFFLINE_MESSAGE} className={styles.image} src={offline} />
       </p>
     </div>
   );

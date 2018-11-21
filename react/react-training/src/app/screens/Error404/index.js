@@ -9,8 +9,8 @@ function Error404() {
   return (
     <div>
       <h2 className={styles.title}>{ERROR_404}</h2>
-      <p className={styles.image}>
-        <img alt={ERROR_404} height={cry.height} src={cry} width={cry.width} />
+      <p className={styles.text}>
+        <img alt={ERROR_404} className={styles.image} src={cry} />
       </p>
     </div>
   );

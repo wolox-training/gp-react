@@ -1,3 +1,4 @@
+@import url("https://use.fontawesome.com/releases/v5.5.0/css/all.css");
 @import 'variables/fonts';
 @import 'variables/colors';
 
@@ -6,7 +7,4 @@ body {
   background-color: $mine-shaft;
   color: $white;
   font-family: $font-main;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import styles from '../../../Dashboard/screens/Profile/styles.scss';
+import styles from '../../styles.scss';
 
 function CustomField({ input, type, className, placeholder, meta }) {
   return (
