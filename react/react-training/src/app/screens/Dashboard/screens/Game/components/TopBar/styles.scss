@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   list-style: none;
+  margin-bottom: 20px;
   padding: 2px 0 2px 0;
   width: 100%;
 }
@@ -30,4 +31,17 @@
 
 .active {
   color: $blue;
+}
+
+.linkButton {
+  background-color: transparent;
+  border: none;
+  color: $white;
+  cursor: pointer;
+  font-size: $top-bar-size;
+  padding: 0 0 0 3px;
+
+  &:hover {
+    color: $blue-picton;
+  }
 }
