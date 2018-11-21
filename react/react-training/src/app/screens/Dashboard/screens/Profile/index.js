@@ -3,11 +3,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionsCreators as Actions } from '@redux/login/actions';
 
+import { USER_ID } from '@constants';
+
 import Card from './layout';
 
 class Profile extends Component {
   componentDidMount() {
-    const userId = 1;
+    const userId = USER_ID;
     const { getUser } = this.props;
     getUser(userId);
   }
