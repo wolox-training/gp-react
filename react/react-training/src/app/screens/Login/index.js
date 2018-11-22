@@ -7,13 +7,13 @@ import LoginForm from './layout';
 
 class SignInForm extends Component {
   componentDidMount() {
-    const { loginVerify } = this.props;
-    loginVerify();
+    const { userLoginVerify } = this.props;
+    userLoginVerify();
   }
 
   handleSubmit = values => {
-    const { login } = this.props;
-    login(values.username, values.password);
+    const { userLogin } = this.props;
+    userLogin(values.username, values.password);
   };
 
   render() {
@@ -23,8 +23,8 @@ class SignInForm extends Component {
 }
 
 SignInForm.propTypes = {
-  login: PropTypes.func.isRequired,
-  loginVerify: PropTypes.func.isRequired,
+  userLogin: PropTypes.func.isRequired,
+  userLoginVerify: PropTypes.func.isRequired,
   userLoginError: PropTypes.string
 };
 
@@ -35,8 +35,8 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  login: (username, password) => dispatch(Actions.login(username, password)),
-  loginVerify: () => dispatch(Actions.loginVerify())
+  userLogin: (username, password) => dispatch(Actions.userLogin(username, password)),
+  userLoginVerify: () => dispatch(Actions.userLoginVerify())
 });
 
 export default connect(

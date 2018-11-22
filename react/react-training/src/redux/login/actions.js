@@ -18,11 +18,11 @@ export const actionTypes = {
 };
 
 export const actionsCreators = {
-  getUser: userId => async dispatch => {
+  userGet: userId => async dispatch => {
     dispatch({ type: actionTypes.GET_USER });
     let userData;
     let userDataError;
-    const response = await UserService.getUser(userId);
+    const response = await UserService.userGet(userId);
     if (response.ok) {
       userData = response.data || MSG_UNKNOWN_USER;
       dispatch({
@@ -46,12 +46,12 @@ export const actionsCreators = {
     }
   },
 
-  login: (username, password) => async dispatch => {
+  userLogin: (username, password) => async dispatch => {
     dispatch({ type: actionTypes.LOGIN });
     let userIsLogged;
     let userLoginError;
     let userSession;
-    const response = await UserService.login(username, password);
+    const response = await UserService.userLogin(username, password);
     if (response.ok) {
       userIsLogged = true;
       userLoginError = null;
@@ -84,7 +84,7 @@ export const actionsCreators = {
     }
   },
 
-  loginVerify: () => dispatch => {
+  userLoginVerify: () => dispatch => {
     const userIsLogged = localStorage.getItem('userIsLogged') === 'true';
     const userSession = userIsLogged ? localStorage.getItem('userSession') : false;
     dispatch({
@@ -96,7 +96,7 @@ export const actionsCreators = {
     });
   },
 
-  logout: () => dispatch => {
+  userLogout: () => dispatch => {
     localStorage.removeItem('userIsLogged');
     localStorage.removeItem('userSession');
     const userIsLogged = false;

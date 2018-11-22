@@ -10,8 +10,8 @@ import Card from './layout';
 class Profile extends Component {
   componentDidMount() {
     const userId = USER_ID;
-    const { getUser } = this.props;
-    getUser(userId);
+    const { userGet } = this.props;
+    userGet(userId);
   }
 
   render() {
@@ -21,7 +21,7 @@ class Profile extends Component {
 }
 
 Profile.propTypes = {
-  getUser: PropTypes.func.isRequired,
+  userGet: PropTypes.func.isRequired,
   userData: PropTypes.shape({
     birthday: PropTypes.string.isRequired,
     email: PropTypes.string.isRequired,
@@ -42,7 +42,7 @@ const mapStateToProps = store => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getUser: userId => dispatch(Actions.getUser(userId))
+  userGet: userId => dispatch(Actions.userGet(userId))
 });
 
 export default connect(
