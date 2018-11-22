@@ -3,30 +3,35 @@ import { ERROR_READING_RESPONSE, MSG_UNKNOWN_ID, MSG_UNKNOWN_USER } from '@scree
 
 export const actionTypes = {
   // Get User Service
-  GET_USER: 'GET_USER',
-  GET_USER_FAILURE: 'GET_USER_FAILURE',
-  GET_USER_SUCCESS: 'GET_USER_SUCCESS',
+  USER_GET: 'USER_GET',
+  USER_GET_FAILURE: 'USER_GET_FAILURE',
+  USER_GET_SUCCESS: 'USER_GET_SUCCESS',
+
+  // Post User Service
+  USER_POST: 'USER_GET',
+  USER_POST_FAILURE: 'USER_GET_FAILURE',
+  USER_POST_SUCCESS: 'USER_GET_SUCCESS',
 
   // Login Service
-  LOGIN: 'LOGIN',
-  LOGIN_FAILURE: 'LOGIN_FAILURE',
-  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+  USER_LOGIN: 'USER_LOGIN',
+  USER_LOGIN_FAILURE: 'USER_LOGIN_FAILURE',
+  USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
 
   // Other actions
-  LOGIN_VERIFY: 'LOGIN_VERIFY',
-  LOGOUT: 'LOGOUT'
+  USER_LOGIN_VERIFY: 'USER_LOGIN_VERIFY',
+  USER_LOGOUT: 'USER_LOGOUT'
 };
 
 export const actionsCreators = {
   userGet: userId => async dispatch => {
-    dispatch({ type: actionTypes.GET_USER });
+    dispatch({ type: actionTypes.USER_GET });
     let userData;
     let userDataError;
     const response = await UserService.userGet(userId);
     if (response.ok) {
       userData = response.data || MSG_UNKNOWN_USER;
       dispatch({
-        type: actionTypes.GET_USER_SUCCESS,
+        type: actionTypes.USER_GET_SUCCESS,
         payload: {
           userId,
           userData
@@ -38,7 +43,35 @@ export const actionsCreators = {
           ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
           : ERROR_READING_RESPONSE;
       dispatch({
-        type: actionTypes.GET_USER_FAILURE,
+        type: actionTypes.USER_GET_FAILURE,
+        payload: {
+          userDataError
+        }
+      });
+    }
+  },
+
+  userPost: myUser => async dispatch => {
+    dispatch({ type: actionTypes.USER_POST });
+    let userData;
+    let userDataError;
+    const response = await UserService.userPost(myUser);
+    console.log(response);
+    if (response.ok) {
+      userData = response.data || MSG_UNKNOWN_USER;
+      dispatch({
+        type: actionTypes.USER_POST_SUCCESS,
+        payload: {
+          userData
+        }
+      });
+    } else {
+      userDataError =
+        response.data && response.data.error && response.data.error.message && response.data.error.statusCode
+          ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
+          : ERROR_READING_RESPONSE;
+      dispatch({
+        type: actionTypes.USER_POST_FAILURE,
         payload: {
           userDataError
         }
@@ -47,7 +80,7 @@ export const actionsCreators = {
   },
 
   userLogin: (username, password) => async dispatch => {
-    dispatch({ type: actionTypes.LOGIN });
+    dispatch({ type: actionTypes.USER_LOGIN });
     let userIsLogged;
     let userLoginError;
     let userSession;
@@ -59,7 +92,7 @@ export const actionsCreators = {
       localStorage.setItem('userIsLogged', `${userIsLogged}`);
       localStorage.setItem('userSession', userSession);
       dispatch({
-        type: actionTypes.LOGIN_SUCCESS,
+        type: actionTypes.USER_LOGIN_SUCCESS,
         payload: {
           userIsLogged,
           userSession
@@ -75,7 +108,7 @@ export const actionsCreators = {
       localStorage.removeItem('userIsLogged');
       localStorage.removeItem('userSession');
       dispatch({
-        type: actionTypes.LOGIN_FAILURE,
+        type: actionTypes.USER_LOGIN_FAILURE,
         payload: {
           userIsLogged,
           userLoginError
@@ -88,7 +121,7 @@ export const actionsCreators = {
     const userIsLogged = localStorage.getItem('userIsLogged') === 'true';
     const userSession = userIsLogged ? localStorage.getItem('userSession') : false;
     dispatch({
-      type: actionTypes.LOGIN_VERIFY,
+      type: actionTypes.USER_LOGIN_VERIFY,
       payload: {
         userIsLogged,
         userSession
@@ -102,7 +135,7 @@ export const actionsCreators = {
     const userIsLogged = false;
     const userSession = null;
     dispatch({
-      type: actionTypes.LOGOUT,
+      type: actionTypes.USER_LOGOUT,
       payload: {
         userIsLogged,
         userSession

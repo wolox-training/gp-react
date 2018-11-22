@@ -7,15 +7,23 @@ import Dashboard from '@screens/Dashboard';
 import Error404 from '@screens/Error404';
 import Login from '@screens/Login';
 import Offline from '@screens/Offline';
+import { actionsCreators as Actions } from '@redux/login/actions';
 import { ROUTES } from '@constants/routes.js';
 
-import { OFFLINE_WE_ARE } from '@constants';
+import { WE_ARE_ONLINE, USER_INI } from '@constants';
 
 import AuthRoute from './components/AuthRoute';
 
 class AppRoutes extends Component {
+  componentDidMount() {
+    if (WE_ARE_ONLINE) {
+      const { userPost } = this.props;
+      userPost(USER_INI);
+    }
+  }
+
   render() {
-    if (OFFLINE_WE_ARE) {
+    if (!WE_ARE_ONLINE) {
       return <Offline />;
     }
 
@@ -34,11 +42,19 @@ class AppRoutes extends Component {
 }
 
 AppRoutes.propTypes = {
-  userIsLogged: PropTypes.bool
+  userIsLogged: PropTypes.bool,
+  userPost: PropTypes.func
 };
 
 const mapStateToProps = store => ({
   userIsLogged: store.LoginReducer.userIsLogged
 });
 
-export default connect(mapStateToProps)(AppRoutes);
+const mapDispatchToProps = dispatch => ({
+  userPost: myUser => dispatch(Actions.userPost(myUser))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AppRoutes);

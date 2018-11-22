@@ -11,42 +11,57 @@ const initialState = {
 
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.GET_USER:
+    case actionTypes.USER_GET:
       return {
         ...state,
         ...action.payload
       };
-    case actionTypes.GET_USER_FAILURE:
+    case actionTypes.USER_GET_FAILURE:
       return {
         ...state,
         ...action.payload
       };
-    case actionTypes.GET_USER_SUCCESS:
+    case actionTypes.USER_GET_SUCCESS:
       return {
         ...state,
         ...action.payload
       };
-    case actionTypes.LOGIN:
+    case actionTypes.USER_POST:
       return {
         ...state,
         ...action.payload
       };
-    case actionTypes.LOGIN_FAILURE:
+    case actionTypes.USER_POST_FAILURE:
       return {
         ...state,
         ...action.payload
       };
-    case actionTypes.LOGIN_SUCCESS:
+    case actionTypes.USER_POST_SUCCESS:
       return {
         ...state,
         ...action.payload
       };
-    case actionTypes.LOGIN_VERIFY:
+    case actionTypes.USER_LOGIN:
       return {
         ...state,
         ...action.payload
       };
-    case actionTypes.LOGOUT:
+    case actionTypes.USER_LOGIN_FAILURE:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.USER_LOGIN_SUCCESS:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.USER_LOGIN_VERIFY:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.USER_LOGOUT:
       return {
         ...state,
         ...action.payload
