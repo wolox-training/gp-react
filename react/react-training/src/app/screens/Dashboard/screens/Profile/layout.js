@@ -1,49 +1,74 @@
 import PropTypes from 'prop-types';
-import React, { Fragment } from 'react';
+import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
+import { RIEInput } from 'riek';
+import { actionsCreators as Actions } from '@redux/login/actions';
+
+import { validateEmail } from '@utils';
 
 import photo from './assets/profile.jpg';
 import styles from './styles.scss';
 
-function Layout({ userData }) {
-  if (!userData) {
-    return <div className={styles.loader}>Loading...</div>;
-  }
+class Layout extends Component {
+  userChangeData = newUserData => {
+    const { userData, userPatch } = this.props;
+    userPatch(userData.id, newUserData);
+  };
 
-  const userName = `${userData.name} ${userData.surname}`;
-  return (
-    <Fragment>
-      <div>
-        <h2 className={styles.title}>{userName}</h2>
-      </div>
-      <div className={styles.card}>
-        <div className={styles.framework}>
-          <img alt={userName} className={styles.photo} src={photo} />
+  handleValidate = email => validateEmail(email);
+
+  render() {
+    const { userData } = this.props;
+    if (!userData) {
+      return <div className={styles.loader}>Loading...</div>;
+    }
+
+    const userName = `${userData.name} ${userData.surname}`;
+    return (
+      <Fragment>
+        <div>
+          <h2 className={styles.title}>{userName}</h2>
         </div>
-        <div className={styles.info}>
-          <p className={styles.text}>
-            <span className={styles.user}>Id:</span> {userData.id}
-            <br />
-            <span className={styles.user}>Email:</span>
-            &nbsp;
-            <a href={userData.email} className={styles.link}>
-              {userData.email}
-            </a>
-            <br />
-            <span className={styles.user}>Gender:</span> {userData.gender}
-            <br />
-            <span className={styles.user}>Phone:</span>{' '}
-            <a href="tel:(514) 706 7652}" className={styles.link}>
-              {userData.phone}
-            </a>
-            <br />
-            <span className={styles.user}>Birthday:</span> {userData.birthday}
-            <br />
-            <span className={styles.user}>Country:</span> {userData.region}
-          </p>
+        <div className={styles.card}>
+          <div className={styles.framework}>
+            <img alt={userName} className={styles.photo} src={photo} />
+          </div>
+          <div className={styles.info}>
+            <p className={styles.text}>
+              <span className={styles.user}>Id:</span> {userData.id}
+              <br />
+              <span className={styles.user}>Email:</span>
+              &nbsp;
+              <RIEInput
+                value={userData.email}
+                propName="email"
+                change={this.userChangeData}
+                validate={this.handleValidate}
+                shouldRemainWhileInvalid
+                classInvalid={styles.error}
+              />
+              <br />
+              <span className={styles.user}>Gender:</span>
+              &nbsp;
+              <RIEInput value={userData.gender} propName="gender" change={this.userChangeData} />
+              <br />
+              <span className={styles.user}>Phone:</span>
+              &nbsp;
+              <RIEInput value={userData.phone} propName="phone" change={this.userChangeData} />
+              <br />
+              <span className={styles.user}>Birthday:</span>
+              &nbsp;
+              <RIEInput value={userData.birthday} propName="birthday" change={this.userChangeData} />
+              <br />
+              <span className={styles.user}>Country:</span>
+              &nbsp;
+              <RIEInput value={userData.region} propName="region" change={this.userChangeData} />
+            </p>
+          </div>
         </div>
-      </div>
-    </Fragment>
-  );
+      </Fragment>
+    );
+  }
 }
 
 Layout.propTypes = {
@@ -57,7 +82,21 @@ Layout.propTypes = {
     region: PropTypes.string.isRequired,
     surname: PropTypes.string.isRequired,
     username: PropTypes.string.isRequired
-  })
+  }),
+  userPatch: PropTypes.func.isRequired
 };
 
-export default Layout;
+const mapStateToProps = store => ({
+  userId: store.LoginReducer.userId,
+  userData: store.LoginReducer.userData,
+  userDataError: store.LoginReducer.userDataError
+});
+
+const mapDispatchToProps = dispatch => ({
+  userPatch: (userId, userData) => dispatch(Actions.userPatch(userId, userData))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Layout);

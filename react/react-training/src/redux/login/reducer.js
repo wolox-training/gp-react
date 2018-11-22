@@ -26,21 +26,6 @@ const Reducer = (state = initialState, action) => {
         ...state,
         ...action.payload
       };
-    case actionTypes.USER_POST:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case actionTypes.USER_POST_FAILURE:
-      return {
-        ...state,
-        ...action.payload
-      };
-    case actionTypes.USER_POST_SUCCESS:
-      return {
-        ...state,
-        ...action.payload
-      };
     case actionTypes.USER_LOGIN:
       return {
         ...state,
@@ -52,6 +37,36 @@ const Reducer = (state = initialState, action) => {
         ...action.payload
       };
     case actionTypes.USER_LOGIN_SUCCESS:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.USER_PATCH:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.USER_PATCH_FAILURE:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.USER_PATCH_SUCCESS:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.USER_POST:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.USER_POST_FAILURE:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case actionTypes.USER_POST_SUCCESS:
       return {
         ...state,
         ...action.payload
