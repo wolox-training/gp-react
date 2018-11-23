@@ -17,33 +17,32 @@ import AuthRoute from './components/AuthRoute';
 class AppRoutes extends Component {
   componentDidMount() {
     if (WE_ARE_ONLINE) {
-      const { userPost } = this.props;
-      userPost(USER_INI);
+      this.props.userPost(USER_INI);
     }
   }
 
   render() {
-    if (!WE_ARE_ONLINE) {
-      return <Offline />;
+    if (WE_ARE_ONLINE) {
+      const { userIsLogged } = this.props;
+      return (
+        <Router>
+          <Switch>
+            <AuthRoute exact path={ROUTES.HOME} component={Login} userIsLogged={userIsLogged} />
+            <AuthRoute exact path={ROUTES.GAME} component={Dashboard} userIsLogged={userIsLogged} />
+            <Route component={Error404} />
+          </Switch>
+        </Router>
+      );
     }
 
-    // We are online...
-    const { userIsLogged } = this.props;
-    return (
-      <Router>
-        <Switch>
-          <AuthRoute exact path={ROUTES.HOME} component={Login} userIsLogged={userIsLogged} />
-          <AuthRoute exact path={ROUTES.GAME} component={Dashboard} userIsLogged={userIsLogged} />
-          <Route component={Error404} />
-        </Switch>
-      </Router>
-    );
+    // We are Offline
+    return <Offline />;
   }
 }
 
 AppRoutes.propTypes = {
   userIsLogged: PropTypes.bool,
-  userPost: PropTypes.func
+  userPost: PropTypes.func.isRequired
 };
 
 const mapStateToProps = store => ({
