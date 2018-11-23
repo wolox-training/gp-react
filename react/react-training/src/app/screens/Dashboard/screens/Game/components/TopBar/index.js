@@ -9,8 +9,7 @@ import styles from './styles.scss';
 
 class TopBar extends Component {
   handleClick = () => {
-    const { userLogout } = this.props;
-    userLogout();
+    this.props.userLogout();
   };
 
   render() {

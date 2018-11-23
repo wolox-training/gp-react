@@ -9,14 +9,11 @@ import Card from './layout';
 
 class Profile extends Component {
   componentDidMount() {
-    const userId = USER_ID;
-    const { userGet } = this.props;
-    userGet(userId);
+    this.props.userGet(USER_ID);
   }
 
   render() {
-    const { userData } = this.props;
-    return <Card userData={userData} />;
+    return <Card userData={this.props.userData} />;
   }
 }
 
