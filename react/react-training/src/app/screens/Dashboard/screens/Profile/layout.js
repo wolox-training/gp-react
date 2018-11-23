@@ -35,10 +35,11 @@ class Layout extends Component {
           </div>
           <div className={styles.info}>
             <p className={styles.text}>
-              <span className={styles.user}>Id:</span> {userData.id}
-              <br />
+              <span className={styles.user}>Id:</span>
+              {userData.id}
+            </p>
+            <p className={styles.text}>
               <span className={styles.user}>Email:</span>
-              &nbsp;
               <RIEInput
                 value={userData.email}
                 propName="email"
@@ -47,21 +48,21 @@ class Layout extends Component {
                 shouldRemainWhileInvalid
                 classInvalid={styles.error}
               />
-              <br />
+            </p>
+            <p className={styles.text}>
               <span className={styles.user}>Gender:</span>
-              &nbsp;
               <RIEInput value={userData.gender} propName="gender" change={this.userChangeData} />
-              <br />
+            </p>
+            <p className={styles.text}>
               <span className={styles.user}>Phone:</span>
-              &nbsp;
               <RIEInput value={userData.phone} propName="phone" change={this.userChangeData} />
-              <br />
+            </p>
+            <p className={styles.text}>
               <span className={styles.user}>Birthday:</span>
-              &nbsp;
               <RIEInput value={userData.birthday} propName="birthday" change={this.userChangeData} />
-              <br />
+            </p>
+            <p className={styles.text}>
               <span className={styles.user}>Country:</span>
-              &nbsp;
               <RIEInput value={userData.region} propName="region" change={this.userChangeData} />
             </p>
           </div>
