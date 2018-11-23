@@ -7,18 +7,15 @@ import LoginForm from './layout';
 
 class SignInForm extends Component {
   componentDidMount() {
-    const { userLoginVerify } = this.props;
-    userLoginVerify();
+    this.props.userLoginVerify();
   }
 
   handleSubmit = values => {
-    const { userLogin } = this.props;
-    userLogin(values.username, values.password);
+    this.props.userLogin(values.username, values.password);
   };
 
   render() {
-    const { userLoginError } = this.props;
-    return <LoginForm onSubmit={this.handleSubmit} userLoginError={userLoginError} />;
+    return <LoginForm onSubmit={this.handleSubmit} userLoginError={this.props.userLoginError} />;
   }
 }
 
