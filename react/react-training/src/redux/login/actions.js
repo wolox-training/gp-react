@@ -1,16 +1,9 @@
 import UserService from '@services/LoginService.js';
+import { completeTypes, createTypes } from 'redux-recompose';
 import { ERROR_READING_RESPONSE, MSG_UNKNOWN_ID } from '@screens/Login/validation';
 
-export const actionTypes = {
-  // Login Service
-  USER_LOGIN: 'USER_LOGIN',
-  USER_LOGIN_FAILURE: 'USER_LOGIN_FAILURE',
-  USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
-
-  // Other actions
-  USER_LOGIN_VERIFY: 'USER_LOGIN_VERIFY',
-  USER_LOGOUT: 'USER_LOGOUT'
-};
+const myActionTypes = ['USER_LOGIN'];
+export const actionTypes = createTypes(completeTypes(myActionTypes, ['USER_LOGIN_VERIFY', 'USER_LOGOUT']));
 
 export const actionsCreators = {
   userLogin: (username, password) => async dispatch => {

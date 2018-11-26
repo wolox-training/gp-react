@@ -1,22 +1,9 @@
 import UserService from '@services/UserService.js';
+import { completeTypes, createTypes } from 'redux-recompose';
 import { ERROR_READING_RESPONSE, MSG_UNKNOWN_USER } from '@screens/Login/validation';
 
-export const actionTypes = {
-  // Get User Service
-  USER_GET: 'USER_GET',
-  USER_GET_FAILURE: 'USER_GET_FAILURE',
-  USER_GET_SUCCESS: 'USER_GET_SUCCESS',
-
-  // Patch User Service
-  USER_PATCH: 'USER_PATCH',
-  USER_PATCH_FAILURE: 'USER_PATCH_FAILURE',
-  USER_PATCH_SUCCESS: 'USER_PATCH_SUCCESS',
-
-  // Post User Service
-  USER_POST: 'USER_GET',
-  USER_POST_FAILURE: 'USER_GET_FAILURE',
-  USER_POST_SUCCESS: 'USER_GET_SUCCESS'
-};
+const myActionTypes = ['USER_GET', 'USER_PATCH', 'USER_POST'];
+export const actionTypes = createTypes(completeTypes(myActionTypes));
 
 export const actionsCreators = {
   userGet: userId => async dispatch => {
