@@ -1,13 +1,21 @@
+import { completeState } from 'redux-recompose';
+
 import { actionTypes } from './actions';
 
-const initialState = {
+const initialStateDescription = {
   userIsLogged: localStorage.getItem('userIsLogged') === 'true',
   userLoginError: null,
   userSession: null,
   userId: null,
-  userData: null,
-  userDataError: null
+  userData: null
 };
+
+const initialState = completeState(initialStateDescription, [
+  'userIsLogged',
+  'userLoginError',
+  'userSession',
+  'userId'
+]);
 
 const Reducer = (state = initialState, action) => {
   switch (action.type) {

@@ -1,10 +1,13 @@
+import { completeState } from 'redux-recompose';
+
 import { actionTypes } from './actions';
 
-const initialState = {
+const initialStateDescription = {
   userId: null,
-  userData: null,
-  userDataError: null
+  userData: null
 };
+
+const initialState = completeState(initialStateDescription, ['userId']);
 
 const Reducer = (state = initialState, action) => {
   switch (action.type) {
