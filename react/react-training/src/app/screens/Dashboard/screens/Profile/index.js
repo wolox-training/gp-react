@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actionsCreators as Actions } from '@redux/login/actions';
+import { actionsCreators as Actions } from '@redux/user/actions';
 
 import { USER_ID } from '@constants';
 
@@ -34,8 +34,8 @@ Profile.propTypes = {
 
 const mapStateToProps = store => ({
   userId: store.LoginReducer.userId,
-  userData: store.LoginReducer.userData,
-  userDataError: store.LoginReducer.userDataError
+  userData: store.UserReducer.userData,
+  userDataError: store.UserReducer.userDataError
 });
 
 const mapDispatchToProps = dispatch => ({

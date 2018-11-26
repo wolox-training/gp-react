@@ -7,7 +7,7 @@ import Dashboard from '@screens/Dashboard';
 import Error404 from '@screens/Error404';
 import Login from '@screens/Login';
 import Offline from '@screens/Offline';
-import { actionsCreators as Actions } from '@redux/login/actions';
+import { actionsCreators as Actions } from '@redux/user/actions';
 import { ROUTES } from '@constants/routes.js';
 
 import { WE_ARE_ONLINE, USER_INI } from '@constants';

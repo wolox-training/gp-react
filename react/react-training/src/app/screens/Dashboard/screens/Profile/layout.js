@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { RIEInput } from 'riek';
-import { actionsCreators as Actions } from '@redux/login/actions';
+import { actionsCreators as Actions } from '@redux/user/actions';
 
 import { validateEmail } from '@utils';
 
@@ -89,8 +89,8 @@ Layout.propTypes = {
 
 const mapStateToProps = store => ({
   userId: store.LoginReducer.userId,
-  userData: store.LoginReducer.userData,
-  userDataError: store.LoginReducer.userDataError
+  userData: store.UserReducer.userData,
+  userDataError: store.UserReducer.userDataError
 });
 
 const mapDispatchToProps = dispatch => ({
