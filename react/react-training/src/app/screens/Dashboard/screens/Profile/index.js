@@ -5,6 +5,7 @@ import { actionsCreators as Actions } from '@redux/user/actions';
 
 import { USER_ID } from '@constants';
 
+import { USER_DATA_SHAPE } from './constants';
 import Card from './layout';
 
 class Profile extends Component {
@@ -19,17 +20,7 @@ class Profile extends Component {
 
 Profile.propTypes = {
   userGet: PropTypes.func.isRequired,
-  userData: PropTypes.shape({
-    birthday: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    gender: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-    region: PropTypes.string.isRequired,
-    surname: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired
-  })
+  userData: PropTypes.shape(USER_DATA_SHAPE)
 };
 
 const mapStateToProps = store => ({

@@ -6,6 +6,7 @@ import { actionsCreators as Actions } from '@redux/user/actions';
 
 import { validateEmail } from '@utils';
 
+import { USER_DATA_SHAPE } from './constants';
 import photo from './assets/profile.jpg';
 import styles from './styles.scss';
 
@@ -73,17 +74,7 @@ class Layout extends Component {
 }
 
 Layout.propTypes = {
-  userData: PropTypes.shape({
-    birthday: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    gender: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    phone: PropTypes.string.isRequired,
-    region: PropTypes.string.isRequired,
-    surname: PropTypes.string.isRequired,
-    username: PropTypes.string.isRequired
-  }),
+  userData: PropTypes.shape(USER_DATA_SHAPE),
   userPatch: PropTypes.func.isRequired
 };
 
