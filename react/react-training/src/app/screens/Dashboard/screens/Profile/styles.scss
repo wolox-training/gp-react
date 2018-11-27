@@ -15,7 +15,7 @@
   display: flex;
   justify-content: center;
   margin: 0 auto;
-  max-width: 500px;
+  max-width: 100%;
   padding: 10px;
   width: 500px;
 }
@@ -32,7 +32,7 @@
   animation: fadein 2s;
   border-radius: 50%;
   height: 150px;
-  max-width: 150px;
+  max-width: 100%;
   width: 150px;
 }
 
@@ -67,7 +67,7 @@
   animation: load1 1s infinite ease-in-out;
   background-color: $white;
   height: 48px;
-  max-width: 12px;
+  max-width: 100%;
   width: 12px;
 }
 
