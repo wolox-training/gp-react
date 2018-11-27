@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionsCreators as Actions } from '@redux/user/actions';
+import { USER_DATA_SHAPE } from '@propTypes/userDataShape';
 
-import { USER_DATA_SHAPE, USER_ID } from '@constants';
+import { USER_ID } from '@constants';
 
 import Card from './layout';
 
