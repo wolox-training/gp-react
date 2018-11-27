@@ -3,9 +3,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actionsCreators as Actions } from '@redux/user/actions';
 
-import { USER_ID } from '@constants';
+import { USER_DATA_SHAPE, USER_ID } from '@constants';
 
-import { USER_DATA_SHAPE } from './constants';
 import Card from './layout';
 
 class Profile extends Component {
