@@ -4,9 +4,10 @@ import { connect } from 'react-redux';
 import { RIEInput } from 'riek';
 import { actionsCreators as Actions } from '@redux/user/actions';
 
+import { USER_DATA_SHAPE } from '@constants';
+
 import { validateEmail } from '@utils';
 
-import { USER_DATA_SHAPE } from './constants';
 import photo from './assets/profile.jpg';
 import styles from './styles.scss';
 

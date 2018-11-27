@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const LINES = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2, 5, 8], [0, 4, 8], [2, 4, 6]];
 
 export const FORM_SIGIN = 'loginForm';
@@ -22,4 +24,16 @@ export const USER_INI = {
   birthday: '08/11/1973',
   name: 'Gabriel',
   surname: 'Porras'
+};
+
+export const USER_DATA_SHAPE = {
+  birthday: PropTypes.string.isRequired,
+  email: PropTypes.string.isRequired,
+  gender: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  phone: PropTypes.string.isRequired,
+  region: PropTypes.string.isRequired,
+  surname: PropTypes.string.isRequired,
+  username: PropTypes.string.isRequired
 };
