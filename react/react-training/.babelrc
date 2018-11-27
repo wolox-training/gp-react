@@ -8,6 +8,7 @@
       "alias": {
         "@components": "./src/app/components",
         "@constants": "./src/constants",
+        "@propTypes": "./src/propTypes",
         "@redux": "./src/redux",
         "@services": "./src/services",
         "@screens": "./src/app/screens",

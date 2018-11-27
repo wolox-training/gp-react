@@ -1,21 +1,24 @@
-import UserService from '@services/UserService.js';
+import UserService from '@services/LoginService.js';
 import { ERROR_READING_RESPONSE, MSG_UNKNOWN_ID } from '@screens/Login/validation';
 
 export const actionTypes = {
-  LOGIN: 'LOGIN',
-  LOGIN_FAILURE: 'LOGIN_FAILURE',
-  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
-  LOGIN_VERIFY: 'LOGIN_VERIFY',
-  LOGOUT: 'LOGOUT'
+  // Login Service
+  USER_LOGIN: 'USER_LOGIN',
+  USER_LOGIN_FAILURE: 'USER_LOGIN_FAILURE',
+  USER_LOGIN_SUCCESS: 'USER_LOGIN_SUCCESS',
+
+  // Other actions
+  USER_LOGIN_VERIFY: 'USER_LOGIN_VERIFY',
+  USER_LOGOUT: 'USER_LOGOUT'
 };
 
 export const actionsCreators = {
-  login: (username, password) => async dispatch => {
-    dispatch({ type: actionTypes.LOGIN });
+  userLogin: (username, password) => async dispatch => {
+    dispatch({ type: actionTypes.USER_LOGIN });
     let userIsLogged;
     let userLoginError;
     let userSession;
-    const response = await UserService.login(username, password);
+    const response = await UserService.userLogin(username, password);
     if (response.ok) {
       userIsLogged = true;
       userLoginError = null;
@@ -23,7 +26,7 @@ export const actionsCreators = {
       localStorage.setItem('userIsLogged', `${userIsLogged}`);
       localStorage.setItem('userSession', userSession);
       dispatch({
-        type: actionTypes.LOGIN_SUCCESS,
+        type: actionTypes.USER_LOGIN_SUCCESS,
         payload: {
           userIsLogged,
           userSession
@@ -39,7 +42,7 @@ export const actionsCreators = {
       localStorage.removeItem('userIsLogged');
       localStorage.removeItem('userSession');
       dispatch({
-        type: actionTypes.LOGIN_FAILURE,
+        type: actionTypes.USER_LOGIN_FAILURE,
         payload: {
           userIsLogged,
           userLoginError
@@ -48,11 +51,11 @@ export const actionsCreators = {
     }
   },
 
-  loginVerify: () => dispatch => {
+  userLoginVerify: () => dispatch => {
     const userIsLogged = localStorage.getItem('userIsLogged') === 'true';
     const userSession = userIsLogged ? localStorage.getItem('userSession') : false;
     dispatch({
-      type: actionTypes.LOGIN_VERIFY,
+      type: actionTypes.USER_LOGIN_VERIFY,
       payload: {
         userIsLogged,
         userSession
@@ -60,13 +63,13 @@ export const actionsCreators = {
     });
   },
 
-  logout: () => dispatch => {
+  userLogout: () => dispatch => {
     localStorage.removeItem('userIsLogged');
     localStorage.removeItem('userSession');
     const userIsLogged = false;
     const userSession = null;
     dispatch({
-      type: actionTypes.LOGOUT,
+      type: actionTypes.USER_LOGOUT,
       payload: {
         userIsLogged,
         userSession

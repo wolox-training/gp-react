@@ -9,8 +9,7 @@ import styles from './styles.scss';
 
 class TopBar extends Component {
   handleClick = () => {
-    const { logout } = this.props;
-    logout();
+    this.props.userLogout();
   };
 
   render() {
@@ -40,11 +39,11 @@ class TopBar extends Component {
 }
 
 TopBar.propTypes = {
-  logout: PropTypes.func.isRequired
+  userLogout: PropTypes.func.isRequired
 };
 
 const mapDispatchToProps = dispatch => ({
-  logout: () => dispatch(Actions.logout())
+  userLogout: () => dispatch(Actions.userLogout())
 });
 
 export default connect(

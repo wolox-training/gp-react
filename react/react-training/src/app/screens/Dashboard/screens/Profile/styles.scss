@@ -6,3 +6,103 @@
   font-size: $title-size;
   text-align: center;
 }
+
+.card {
+  align-content: space-around;
+  background-color: $boulder;
+  border-radius: 10px;
+  box-shadow: 3px 3px 20px $black-50-transparency;
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 10px;
+  width: 500px;
+}
+
+.framework, .info {
+  flex: 1;
+}
+
+.framework {
+  text-align: center;
+}
+
+.photo {
+  animation: fadein 2s;
+  border-radius: 50%;
+  height: 150px;
+  max-width: 100%;
+  width: 150px;
+}
+
+.data {
+  text-align: left;
+}
+
+.text {
+  margin-top: 0;
+}
+
+.link {
+  color: $white;
+}
+
+.user {
+  font-weight: bold;
+}
+
+.error {
+  color: $red;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.loader,
+.loader:before,
+.loader:after {
+  animation: load1 1s infinite ease-in-out;
+  background-color: $white;
+  height: 48px;
+  max-width: 100%;
+  width: 12px;
+}
+
+.loader {
+  animation-delay: -0.16s;
+  color: $white;
+  font-size: 11px;
+  margin: 88px auto;
+  position: relative;
+  text-indent: -9999px;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+  }
+
+  &:before {
+    animation-delay: -0.32s;
+    left: -18px;
+  }
+
+  &:after {
+    left: 18px;
+  }
+}
+
+@keyframes load1 {
+  0%,
+  80%,
+  100% {
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+}
