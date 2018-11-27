@@ -6,35 +6,12 @@ const myActionTypes = ['USER_GET', 'USER_PATCH', 'USER_POST'];
 export const actionTypes = createTypes(completeTypes(myActionTypes));
 
 export const actionsCreators = {
-  userGet: userId => async dispatch => {
-    dispatch({ type: actionTypes.USER_GET });
-    let userData;
-    let userDataError;
-    const response = await UserService.userGet(userId);
-    if (response.ok) {
-      userData = response.data || MSG_UNKNOWN_USER;
-      userDataError = null;
-      dispatch({
-        type: actionTypes.USER_GET_SUCCESS,
-        payload: {
-          userId,
-          userData,
-          userDataError
-        }
-      });
-    } else {
-      userDataError =
-        response.data && response.data.error && response.data.error.message && response.data.error.statusCode
-          ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
-          : ERROR_READING_RESPONSE;
-      dispatch({
-        type: actionTypes.USER_GET_FAILURE,
-        payload: {
-          userDataError
-        }
-      });
-    }
-  },
+  userGet: userId => ({
+    type: actionTypes.USER_GET,
+    target: 'userData',
+    service: UserService.userGet,
+    payload: userId
+  }),
 
   userPatch: (userId, newUserData) => async dispatch => {
     dispatch({ type: actionTypes.USER_PATCH });

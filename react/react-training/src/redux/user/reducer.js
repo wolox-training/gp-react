@@ -8,13 +8,12 @@ const initialStateDescription = {
 };
 
 const initialState = completeState(initialStateDescription, ['userId']);
-console.log(initialState);
+
 const myReducer = {
   primaryActions: [actionTypes.USER_GET, actionTypes.USER_PATCH, actionTypes.USER_POST]
 };
 
 const Reducer = createReducer(initialState, completeReducer(myReducer));
-console.log(completeReducer(myReducer));
 
 // const Reducer = (state = initialState, action) => {
 //   switch (action.type) {
