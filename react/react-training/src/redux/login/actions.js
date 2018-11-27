@@ -1,48 +1,31 @@
 import UserService from '@services/LoginService.js';
-import { completeTypes, createTypes } from 'redux-recompose';
-import { ERROR_READING_RESPONSE, MSG_UNKNOWN_ID } from '@screens/Login/validation';
+import { completeTypes, createTypes, withPostSuccess } from 'redux-recompose';
 
 const myActionTypes = ['USER_LOGIN'];
-export const actionTypes = createTypes(completeTypes(myActionTypes, ['USER_LOGIN_VERIFY', 'USER_LOGOUT']));
+export const actionTypes = createTypes(
+  completeTypes(myActionTypes, ['USER_LOGIN_VERIFY', 'USER_LOGOUT', 'USER_LOGIN_SET'])
+);
 
 export const actionsCreators = {
-  userLogin: (username, password) => async dispatch => {
-    dispatch({ type: actionTypes.USER_LOGIN });
-    let userIsLogged;
-    let userLoginError;
-    let userSession;
-    const response = await UserService.userLogin(username, password);
-    if (response.ok) {
-      userIsLogged = true;
-      userLoginError = null;
-      userSession = response.data.id || MSG_UNKNOWN_ID;
-      localStorage.setItem('userIsLogged', `${userIsLogged}`);
-      localStorage.setItem('userSession', userSession);
-      dispatch({
-        type: actionTypes.USER_LOGIN_SUCCESS,
-        payload: {
-          userIsLogged,
-          userSession
-        }
-      });
-    } else {
-      userIsLogged = false;
-      userLoginError =
-        response.data && response.data.error && response.data.error.message && response.data.error.statusCode
-          ? `Error ${response.data.error.statusCode} - ${response.data.error.message}`
-          : ERROR_READING_RESPONSE;
-      userSession = null;
-      localStorage.removeItem('userIsLogged');
-      localStorage.removeItem('userSession');
-      dispatch({
-        type: actionTypes.USER_LOGIN_FAILURE,
-        payload: {
-          userIsLogged,
-          userLoginError
-        }
-      });
-    }
-  },
+  userLogin: (username, password) => ({
+    type: actionTypes.USER_LOGIN,
+    target: 'userLogin',
+    service: UserService.userLogin,
+    payload: { username, password },
+    injections: [
+      withPostSuccess((dispatch, response) => {
+        const userIsLogged = true;
+        const userSession = response.data.id;
+        localStorage.setItem('userIsLogged', `${userIsLogged}`);
+        localStorage.setItem('userSession', userSession);
+        dispatch({
+          type: actionTypes.USER_LOGIN_SET,
+          target: 'userIsLogged',
+          payload: true
+        });
+      })
+    ]
+  }),
 
   userLoginVerify: () => dispatch => {
     const userIsLogged = localStorage.getItem('userIsLogged') === 'true';
