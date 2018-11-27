@@ -78,7 +78,6 @@
   margin: 88px auto;
   position: relative;
   text-indent: -9999px;
-  transform: translateZ(0);
 
   &:before,
   &:after {
@@ -101,11 +100,9 @@
   0%,
   80%,
   100% {
-    box-shadow: 0 0 $white;
-    height: 48px;
+    opacity: 0;
   }
   40% {
-    box-shadow: 0 -24px $white;
-    height: 60px;
+    opacity: 1;
   }
 }
