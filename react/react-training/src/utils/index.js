@@ -17,3 +17,5 @@ export function validateEmail(email) {
   return re.test(String(email).toLowerCase());
   /* eslint-enable */
 }
+
+export const wait = ms => new Promise(r => setTimeout(r, ms));
