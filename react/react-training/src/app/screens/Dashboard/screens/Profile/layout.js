@@ -78,6 +78,7 @@ Layout.propTypes = {
 };
 
 const mapStateToProps = store => ({
+  isLoading: store.UserReducer.userDataLoading,
   userId: store.LoginReducer.userId,
   userData: store.UserReducer.userData,
   userDataError: store.UserReducer.userDataError
