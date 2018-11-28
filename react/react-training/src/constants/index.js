@@ -6,12 +6,6 @@ export const LINES = [[0, 1, 2], [3, 4, 5], [6, 7, 8], [0, 3, 6], [1, 4, 7], [2,
 
 export const OFFLINE_MESSAGE = 'Sorry. We are offline. Please come back in a few minutes.';
 
-export const TARGE_USERDATA = 'userData';
-
-export const TARGE_USERISLOGGED = 'userIsLogged';
-
-export const TARGET_USERLOGIN = 'userLogin';
-
 export const USER_ID = 1;
 
 export const USER_INI = {

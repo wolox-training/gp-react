@@ -1,7 +1,7 @@
 import UserService from '@services/UserService.js';
 import { completeTypes, createTypes } from 'redux-recompose';
 
-import { TARGE_USERDATA } from '@constants';
+const TARGE_USERDATA = 'userData';
 
 export const actionTypes = createTypes(completeTypes(['USER_GET', 'USER_PATCH', 'USER_POST']));
 

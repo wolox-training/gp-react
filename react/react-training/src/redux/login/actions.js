@@ -1,7 +1,9 @@
 import UserService from '@services/LoginService.js';
 import { completeTypes, createTypes, withPostSuccess } from 'redux-recompose';
 
-import { TARGE_USERISLOGGED, TARGET_USERLOGIN } from '@constants';
+const TARGE_USERISLOGGED = 'userIsLogged';
+
+const TARGET_USERLOGIN = 'userLogin';
 
 export const actionTypes = createTypes(
   completeTypes(['USER_LOGIN'], ['USER_LOGIN_VERIFY', 'USER_LOGOUT', 'USER_LOGIN_SET'])
