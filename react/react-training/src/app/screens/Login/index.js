@@ -38,11 +38,11 @@ const mapDispatchToProps = dispatch => ({
   userLoginVerify: () => dispatch(Actions.userLoginVerify())
 });
 
-const myLogin = HOCLoading(SignInForm);
+const myLoginWithLoading = HOCLoading(SignInForm);
 
-const myLoginWithLoading = connect(
+const myLogin = connect(
   mapStateToProps,
   mapDispatchToProps
-)(myLogin);
+)(myLoginWithLoading);
 
-export default myLoginWithLoading;
+export default myLogin;
