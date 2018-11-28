@@ -1,3 +1,4 @@
+import HOCLoading from '@components/HOCLoading';
 import PropTypes from 'prop-types';
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
@@ -20,9 +21,7 @@ class Layout extends Component {
 
   render() {
     const { userData } = this.props;
-    if (!userData) {
-      return <div className={styles.loader}>Loading...</div>;
-    }
+    if (!userData) return null;
 
     const userName = `${userData.name} ${userData.surname}`;
     return (
@@ -88,7 +87,11 @@ const mapDispatchToProps = dispatch => ({
   userPatch: (userId, userData) => dispatch(Actions.userPatch(userId, userData))
 });
 
-export default connect(
+const myLayoutWithLoading = HOCLoading(Layout);
+
+const myLayout = connect(
   mapStateToProps,
   mapDispatchToProps
-)(Layout);
+)(myLayoutWithLoading);
+
+export default myLayout;
