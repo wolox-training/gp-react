@@ -1,26 +1,25 @@
 import UserService from '@services/LoginService.js';
 import { completeTypes, createTypes, withPostSuccess } from 'redux-recompose';
 
-const myActionTypes = ['USER_LOGIN'];
+import { TARGE_USERISLOGGED, TARGET_USERLOGIN } from '@constants';
+
 export const actionTypes = createTypes(
-  completeTypes(myActionTypes, ['USER_LOGIN_VERIFY', 'USER_LOGOUT', 'USER_LOGIN_SET'])
+  completeTypes(['USER_LOGIN'], ['USER_LOGIN_VERIFY', 'USER_LOGOUT', 'USER_LOGIN_SET'])
 );
 
 export const actionsCreators = {
   userLogin: (username, password) => ({
     type: actionTypes.USER_LOGIN,
-    target: 'userLogin',
+    target: TARGET_USERLOGIN,
     service: UserService.userLogin,
     payload: { username, password },
     injections: [
       withPostSuccess((dispatch, response) => {
-        const userIsLogged = true;
-        const userSession = response.data.id;
-        localStorage.setItem('userIsLogged', `${userIsLogged}`);
-        localStorage.setItem('userSession', userSession);
+        localStorage.setItem('userIsLogged', 'true');
+        localStorage.setItem('userSession', response.data.id);
         dispatch({
           type: actionTypes.USER_LOGIN_SET,
-          target: 'userIsLogged',
+          target: TARGE_USERISLOGGED,
           payload: true
         });
       })
