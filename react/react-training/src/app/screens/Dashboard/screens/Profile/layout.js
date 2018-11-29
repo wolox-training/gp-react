@@ -88,11 +88,11 @@ const mapDispatchToProps = dispatch => ({
   userPatch: (userId, userData) => dispatch(Actions.userPatch(userId, userData))
 });
 
-const myLayoutWithLoading = HOCLoading(Layout);
+const LayoutWithLoading = HOCLoading(Layout);
 
 const myLayout = connect(
   mapStateToProps,
   mapDispatchToProps
-)(myLayoutWithLoading);
+)(LayoutWithLoading);
 
 export default myLayout;
