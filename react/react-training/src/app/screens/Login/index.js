@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import HOCLoading from '@components/HOCLoading';
 import { actionsCreators as Actions } from '@redux/login/actions';
 
 import LoginForm from './layout';
@@ -26,6 +27,7 @@ SignInForm.propTypes = {
 };
 
 const mapStateToProps = store => ({
+  isLoading: store.LoginReducer.userLoginLoading,
   userIsLogged: store.LoginReducer.userIsLogged,
   userLoginError: store.LoginReducer.userLoginError,
   userSession: store.LoginReducer.userSession
@@ -36,7 +38,11 @@ const mapDispatchToProps = dispatch => ({
   userLoginVerify: () => dispatch(Actions.userLoginVerify())
 });
 
-export default connect(
+const LoginWithLoading = HOCLoading(SignInForm);
+
+const myLogin = connect(
   mapStateToProps,
   mapDispatchToProps
-)(SignInForm);
+)(LoginWithLoading);
+
+export default myLogin;

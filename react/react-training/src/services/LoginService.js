@@ -1,5 +1,10 @@
+import { wait } from '@utils';
+
 import api from '../config/api';
 
 export default {
-  userLogin: ({ username, password }) => api.post('/Users/login', { username, password })
+  userLogin: async ({ username, password }) => {
+    await wait(2000);
+    return api.post('/Users/login', { username, password });
+  }
 };
