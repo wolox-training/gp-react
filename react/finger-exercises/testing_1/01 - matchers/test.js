@@ -14,6 +14,7 @@ describe('01 - matchers', () => {
     expect(pow([2, 2], [3, 3])).toContain(4);
     expect(pow([2, 2], [3, 3])).toContain(27);
   });
-  xit('pow returns undefined in the right position of the result array if pair is not as expected', () => {
+  it('pow returns undefined in the right position of the result array if a pair is not as expected', () => {
+    expect(pow([2, 2], [3])[1]).toBeUndefined();
   });
 });
