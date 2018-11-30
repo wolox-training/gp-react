@@ -4,7 +4,8 @@ describe('01 - matchers', () => {
   it('pow returns the power based on two numeric arguments', () => {
     expect(pow(2,2)).toBe(4);
   });
-  xit('pow returns undefined if there is no arguments', () => {
+  it('pow returns undefined if there are no arguments', () => {
+    expect(pow()).toBeUndefined();
   });
   xit('pow returns undefined if there is just one argument', () => {
   });
